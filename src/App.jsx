@@ -3,7 +3,6 @@ import axios from "axios";
 import { usePapaParse } from "react-papaparse";
 import { useSelector, useDispatch } from "react-redux";
 import { setData } from "./store/slice";
-console.log("1");
 
 export default function App() {
   const dispatch = useDispatch();
@@ -18,11 +17,11 @@ export default function App() {
         readString(response.data, {
           worker: true,
           complete: (results) => {
-            console.log("1");
             const resData = results.data;
             resData.shift();
             dispatch(setData(resData));
-            console.log(data);
+            console.log("data");
+            console.log(data[0]);
           },
         });
       });
