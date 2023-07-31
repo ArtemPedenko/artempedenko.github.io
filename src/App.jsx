@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setData } from "./store/slice";
 import SearchBar from "./modules/SearchBar";
 import ButtonBar from "./modules/ButtonBar";
+import { List } from 'react-virtualized';
 
 export default function App() {
   const dispatch = useDispatch();
