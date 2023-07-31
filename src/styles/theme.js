@@ -13,17 +13,35 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: "#000000",
+      light: "#991bb3",
+      main: "#76168a",
+      dark: "#002884",
+      contrastText: "#ffffff",
     },
     secondary: {
-      light: "#97C459",
-      main: "#d1d1d1",
+      light: "#ffffff",
+      main: "#ffffff", //white
     },
     custom1: {
       light: "#97C459",
       main: "#ffffff",
       dark: "#ef6c00",
       contrastText: "rgba(0, 0, 0, 0.87)",
+    },
+  },
+  components: {
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          color: "#ffffff",
+          backgroundColor: "#76168a",
+          width: "100%",
+          borderRadius: "5px",
+          "&:hover": {
+            backgroundColor: "#991bb3",
+          },
+        },
+      },
     },
   },
 });

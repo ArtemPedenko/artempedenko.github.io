@@ -3,6 +3,7 @@ import axios from "axios";
 import { usePapaParse } from "react-papaparse";
 import { useSelector, useDispatch } from "react-redux";
 import { setData } from "./store/slice";
+import SearchBar from "./components/SearchBar";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -30,5 +31,10 @@ export default function App() {
       });
   }, []);
 
-  return <div style={{ color: "white" }}>{data[0]}</div>;
+  return (
+    <>
+      <div>{data[0]}</div>
+      <SearchBar />
+    </>
+  );
 }
