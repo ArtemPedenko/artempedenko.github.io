@@ -19,6 +19,7 @@ export default function App() {
           complete: (results) => {
             const resData = results.data;
             resData.shift();
+            console.log(resData);
             dispatch(setData(resData));
           },
         });
@@ -29,5 +30,5 @@ export default function App() {
       });
   }, []);
 
-  return <div>{data[0][0]}</div>;
+  return <div style={{ color: "white" }}>{/* {data[0][0]} */}</div>;
 }
