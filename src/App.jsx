@@ -20,12 +20,14 @@ export default function App() {
             const resData = results.data;
             resData.shift();
             dispatch(setData(resData));
-            console.log("data");
-            console.log(data[0]);
           },
         });
+      })
+      .catch(function (error) {
+        console.log("error");
+        console.log(error);
       });
   }, []);
 
-  return <div>olo</div>;
+  return <div>{data[0][0]}</div>;
 }
