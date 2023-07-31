@@ -23,11 +23,10 @@ export default function App() {
             resData.shift();
             dispatch(setData(resData));
             console.log(data);
-          }
+          },
         });
       });
-  });
+  }, []);
 
   return <div>olo</div>;
 }
-//
