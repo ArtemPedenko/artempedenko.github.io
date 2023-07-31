@@ -30,5 +30,5 @@ export default function App() {
       });
   }, []);
 
-  return <div style={{ color: "white" }}>{/* {data[0][0]} */}</div>;
+  return <div style={{ color: "white" }}>{data[0]}</div>;
 }
