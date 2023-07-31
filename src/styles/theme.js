@@ -13,8 +13,8 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      light: "#991bb3",
-      main: "#76168a",
+      light: "#991bb3", //purpleHover
+      main: "#76168a", //purple
       dark: "#002884",
       contrastText: "#ffffff",
     },
