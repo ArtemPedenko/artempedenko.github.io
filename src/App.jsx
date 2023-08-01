@@ -23,6 +23,7 @@ export default function App() {
           complete: (results) => {
             const resData = results.data;
             resData.shift();
+            console.log("resData");
             console.log(resData);
             dispatch(setData(resData));
           },
