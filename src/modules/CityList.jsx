@@ -1,6 +1,7 @@
-import { Box, InputBase, styled, Stack } from "@mui/material";
+import { Box, InputBase, styled, Stack, Typography } from "@mui/material";
 import { List } from "react-virtualized";
 import { useSelector, useDispatch } from "react-redux";
+import CityListCard from "./cityList/CityListCard";
 
 export default function CityList() {
   const data = useSelector((state) => state.cityWishList.data);
@@ -12,19 +13,22 @@ export default function CityList() {
     parent, // Reference to the parent List (instance)
     style, // Style object to be applied to row (to position it);
   }) => (
-    <div key={key} style={style}>
-      <div className="element">{data[index]}</div>
-    </div>
+    <Box key={key}>
+      {/* <Typography className="element">{data[index]}</Typography> */}
+      <CityListCard data={data[index]} />
+    </Box>
   );
 
   return (
-    <List
-      width={300}
-      height={300}
-      rowCount={data.length}
-      rowHeight={25}
-      rowRenderer={rowRenderer}
-      className="list"
-    />
+    <Box sx={{ display: "flex", justifyContent: "center", mt: "10px" }}>
+      <List
+        width={800}
+        height={600}
+        rowCount={data.length}
+        rowHeight={25}
+        rowRenderer={rowRenderer}
+        className="list"
+      />
+    </Box>
   );
 }

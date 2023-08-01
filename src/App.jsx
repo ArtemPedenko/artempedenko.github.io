@@ -36,7 +36,6 @@ export default function App() {
 
   return (
     <>
-      <div>{data[0]}</div>
       <SearchBar />
       <ButtonBar />
       <CityList />
