@@ -6,6 +6,7 @@ import { setData, setVisibleData } from "./store/slice";
 import SearchBar from "./modules/SearchBar";
 import ButtonBar from "./modules/ButtonBar";
 import CityList from "./modules/CityList";
+import { Box } from "@mui/material";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -34,10 +35,10 @@ export default function App() {
   }, []);
 
   return (
-    <>
-      <SearchBar />
-      <ButtonBar />
+    <Box sx={{overflow: "auto", backgroundColor: "primary.dark"}}>
+      {/* <SearchBar />
+      <ButtonBar /> */}
       <CityList />
-    </>
+    </Box>
   );
 }

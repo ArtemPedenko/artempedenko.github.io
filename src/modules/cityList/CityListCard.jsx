@@ -6,6 +6,7 @@ import {
   Stack,
   Typography,
   Button,
+  Container
 } from "@mui/material";
 import { addToSelected } from "../../utils";
 import { setSelectedData } from "../../store/slice";
@@ -14,7 +15,7 @@ export default function CityListCard(props) {
   const selectedData = useSelector((state) => state.cityWishList.selectedData);
 
   return (
-    <Box
+    <Container
       sx={{
         display: "flex",
         backgroundColor: "primary.main",
@@ -38,6 +39,6 @@ export default function CityListCard(props) {
           I want to visit
         </Button>
       </Stack>
-    </Box>
+    </Container>
   );
 }

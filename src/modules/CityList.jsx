@@ -1,7 +1,30 @@
-import { Box, InputBase, styled, Stack, Typography } from "@mui/material";
-import { List } from "react-virtualized";
+import { Box, InputBase, styled, Stack, Typography, Container } from "@mui/material";
+import { AutoSizer  } from "react-virtualized";
+import { FixedSizeList as List } from 'react-window';
+
 import { useSelector, useDispatch } from "react-redux";
 import CityListCard from "./cityList/CityListCard";
+import { forwardRef } from "react";
+import SearchBar from "./SearchBar";
+import ButtonBar from "./ButtonBar";
+
+const innerElementType = forwardRef(({ style, ...rest }, ref) => {
+  return (
+    <Container>
+      <SearchBar />
+      <ButtonBar />
+      <div
+        ref={ref}
+        style={{
+          ...style,
+          height: `${parseFloat(style.height) + 50 * 2}px`,
+        }}
+        {...rest}
+      />
+      
+      </Container>
+  );
+});
 
 export default function CityList() {
   const visibleData = useSelector((state) => state.cityWishList.visibleData);
@@ -9,25 +32,31 @@ export default function CityList() {
     index, // Index of row
     isScrolling, // The List is currently being scrolled
     isVisible, // This row is visible within the List (eg it is not an overscanned row)
-    key, // Unique key within array of rendered rows
     parent, // Reference to the parent List (instance)
     style, // Style object to be applied to row (to position it);
   }) => (
-    <Box key={key} style={style}>
+    <Box  style={{
+      ...style,
+      top: `${parseFloat(style.top) + 100}px`,
+      height: `${parseFloat(style.height) + 50}px`,
+      
+    }}>
       <CityListCard data={visibleData[index]} />
     </Box>
   );
 
   return (
-    <Box sx={{ display: "flex", justifyContent: "center", mt: "10px" }}>
-      <List
-        width={800}
-        height={600}
-        rowCount={visibleData.length}
-        rowHeight={100}
-        rowRenderer={rowRenderer}
-        overscanRowCount={5}
-      />
-    </Box>
+    
+      <AutoSizer style={{width: "1200px", height: "95vh", }}>
+          {({ height, width }) => (
+            <List
+            width={width}
+            height={height}
+            itemCount={visibleData.length}
+            itemSize={100}
+            innerElementType={innerElementType}
+          >{rowRenderer}</List>
+          )}
+      </AutoSizer>
   );
 }

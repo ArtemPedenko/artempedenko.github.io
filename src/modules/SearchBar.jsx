@@ -1,5 +1,6 @@
 import { Box, InputBase, styled } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import ButtonBar from "./ButtonBar";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -32,7 +33,7 @@ export default function SearchBar() {
     >
       <Search>
         <SearchIconWrapper>
-          <SearchIcon color="secondary" sx={{ zIndex: 1 }} />
+          <SearchIcon color="secondary"  sx={{ zIndex: 1}}/>
         </SearchIconWrapper>
         <StyledInputBase
           placeholder="Search…"
