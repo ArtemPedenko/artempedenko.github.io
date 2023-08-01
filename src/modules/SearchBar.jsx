@@ -3,7 +3,7 @@ import SearchIcon from "@mui/icons-material/Search";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
-  width: "50%",
+  width: "800px",
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({

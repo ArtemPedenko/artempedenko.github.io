@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   data: [],
+  selectedData: [],
 };
 
 const slice = createSlice({
@@ -14,9 +15,12 @@ const slice = createSlice({
     setData: (state, action) => {
       state.data = action.payload;
     },
+    setSelectedData: (state, action) => {
+      state.selectedData = action.payload;
+    },
   },
 });
 
-export const { setData } = slice.actions;
+export const { setData, setSelectedData } = slice.actions;
 
 export default slice.reducer;

@@ -8,7 +8,6 @@ import {
 } from "@mui/material";
 
 export default function CityListCard(props) {
-  console.log(props.data);
   return (
     <Box
       sx={{
