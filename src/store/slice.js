@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  data: {}
+  data: [],
 };
 
 const slice = createSlice({
@@ -13,8 +13,8 @@ const slice = createSlice({
     },
     setData: (state, action) => {
       state.data = action.payload;
-    }
-  }
+    },
+  },
 });
 
 export const { setData } = slice.actions;

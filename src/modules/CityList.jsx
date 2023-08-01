@@ -19,8 +19,8 @@ export default function CityList() {
 
   return (
     <List
-      width={600}
-      height={600}
+      width={300}
+      height={300}
       rowCount={data.length}
       rowHeight={25}
       rowRenderer={rowRenderer}
