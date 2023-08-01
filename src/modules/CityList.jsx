@@ -1,11 +1,10 @@
 import { Box, InputBase, styled, Stack, Typography } from "@mui/material";
 import { List } from "react-virtualized";
-//import { FixedSizeList as List } from "react-window";
 import { useSelector, useDispatch } from "react-redux";
 import CityListCard from "./cityList/CityListCard";
 
 export default function CityList() {
-  const data = useSelector((state) => state.cityWishList.data);
+  const visibleData = useSelector((state) => state.cityWishList.visibleData);
   const rowRenderer = ({
     index, // Index of row
     isScrolling, // The List is currently being scrolled
@@ -15,25 +14,16 @@ export default function CityList() {
     style, // Style object to be applied to row (to position it);
   }) => (
     <Box key={key} style={style}>
-      {/* <Typography className="element">{data[index]}</Typography> */}
-      <CityListCard data={data[index]} />
+      <CityListCard data={visibleData[index]} />
     </Box>
   );
-
-  // const Row = ({ index }) => (
-  //   //<Box>
-  //   //  {/* <Typography className="element">{data[index]}</Typography> */}
-  //   //  <CityListCard data={data[index]} />
-  //   //</Box>
-  //   <div style={{ color: "white" }}>{data[index]}</div>
-  // );
 
   return (
     <Box sx={{ display: "flex", justifyContent: "center", mt: "10px" }}>
       <List
         width={800}
         height={600}
-        rowCount={data.length}
+        rowCount={visibleData.length}
         rowHeight={100}
         rowRenderer={rowRenderer}
         overscanRowCount={5}

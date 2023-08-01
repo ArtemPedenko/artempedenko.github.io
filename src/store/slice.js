@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   data: [],
   selectedData: [],
+  visibleData: [],
 };
 
 const slice = createSlice({
@@ -18,9 +19,12 @@ const slice = createSlice({
     setSelectedData: (state, action) => {
       state.selectedData = action.payload;
     },
+    setVisibleData: (state, action) => {
+      state.visibleData = action.payload;
+    },
   },
 });
 
-export const { setData, setSelectedData } = slice.actions;
+export const { setData, setSelectedData, setVisibleData } = slice.actions;
 
 export default slice.reducer;

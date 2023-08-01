@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { usePapaParse } from "react-papaparse";
 import { useDispatch } from "react-redux";
-import { setData } from "./store/slice";
+import { setData, setVisibleData } from "./store/slice";
 import SearchBar from "./modules/SearchBar";
 import ButtonBar from "./modules/ButtonBar";
 import CityList from "./modules/CityList";
@@ -23,6 +23,7 @@ export default function App() {
             const resData = results.data;
             resData.shift();
             dispatch(setData(resData));
+            dispatch(setVisibleData(resData));
           },
         });
       })
