@@ -5,12 +5,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { setData } from "./store/slice";
 import SearchBar from "./modules/SearchBar";
 import ButtonBar from "./modules/ButtonBar";
-import { List } from 'react-virtualized';
+import CityList from "./modules/CityList";
 
 export default function App() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.cityWishList.data);
   const { readString } = usePapaParse();
+
   useEffect(() => {
     axios
       .get(
@@ -38,6 +39,7 @@ export default function App() {
       <div>{data[0]}</div>
       <SearchBar />
       <ButtonBar />
+      <CityList />
     </>
   );
 }
