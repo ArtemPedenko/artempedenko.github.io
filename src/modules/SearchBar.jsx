@@ -1,14 +1,8 @@
 import { Box, InputBase, styled } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import ButtonBar from "./ButtonBar";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { search } from "../utils/index";
-import {
-  setVisibleDataCopy,
-  setVisibleData,
-  setSearchingText,
-} from "../store/slice";
+import { setVisibleData, setCurrentList } from "../store/slice";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -33,36 +27,16 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
 
 export default function SearchBar() {
   const dispatch = useDispatch();
-  //const searchingText = useSelector(
-  //  (state) => state.cityWishList.searchingText
-  //);
-  const visibleData = useSelector((state) => state.cityWishList.visibleData);
-  const visibleDataCopy = useSelector(
-    (state) => state.cityWishList.visibleDataCopy
-  );
+  const data = useSelector((state) => state.cityWishList.data);
+  const selectedData = useSelector((state) => state.cityWishList.selectedData);
+  const currentList = useSelector((state) => state.cityWishList.currentList);
   function searchFunc(searchingText) {
-    console.log("searchingText = " + searchingText.length);
-    if (searchingText.length === 0) {
-      console.log("ya tut");
-      dispatch(setVisibleDataCopy(visibleData));
-      dispatch(setVisibleData(visibleDataCopy));
-      console.log(visibleDataCopy);
-    } else {
-      console.log(visibleDataCopy);
-      dispatch(setVisibleData(search(visibleData, searchingText)));
+    if (currentList === "all") {
+      dispatch(setVisibleData(search(data, searchingText)));
+    } else if (currentList === "selected") {
+      dispatch(setVisibleData(search(selectedData, searchingText)));
     }
   }
-  //useEffect(() => {
-  //  console.log("searchingText = " + searchingText);
-  //  if (searchingText === "") {
-  //    console.log("searchingText raven 0");
-  //    dispatch(setVisibleDataCopy(visibleData));
-  //    dispatch(setVisibleData(visibleDataCopy));
-  //    console.log(visibleDataCopy);
-  //  }
-  //  console.log(visibleDataCopy);
-  //  dispatch(setVisibleData(search(visibleData, searchingText)));
-  //}, [searchingText]);
 
   return (
     <Box

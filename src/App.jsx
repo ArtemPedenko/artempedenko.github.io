@@ -25,7 +25,7 @@ export default function App() {
           worker: true,
           complete: (results) => {
             const resData = results.data;
-            console.log("useEffect1");
+            //console.log("useEffect1");
             resData.shift();
             dispatch(setData(resData));
           },
@@ -38,7 +38,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    console.log("useEffect2");
+    //console.log("useEffect2");
   }, [visibleData]);
 
   return (

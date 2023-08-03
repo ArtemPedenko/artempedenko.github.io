@@ -5,7 +5,7 @@ const initialState = {
   selectedData: [],
   visibleData: [],
   searchingText: "",
-  visibleDataCopy: [],
+  currentList: "all",
 };
 
 const slice = createSlice({
@@ -28,8 +28,8 @@ const slice = createSlice({
     setSearchingText: (state, action) => {
       state.searchingText = action.payload;
     },
-    setVisibleDataCopy: (state, action) => {
-      state.visibleDataCopy = action.payload;
+    setCurrentList: (state, action) => {
+      state.currentList = action.payload;
     },
   },
 });
@@ -39,7 +39,7 @@ export const {
   setSelectedData,
   setVisibleData,
   setSearchingText,
-  setVisibleDataCopy,
+  setCurrentList,
 } = slice.actions;
 
 export default slice.reducer;
