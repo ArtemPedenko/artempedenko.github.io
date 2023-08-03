@@ -10,6 +10,9 @@ const theme = createTheme({
       fontWeight: 700,
       fontSize: "18px",
     },
+    caption: {
+      backgroundColor: "yellow",
+    }
   },
   palette: {
     primary: {
