@@ -1,6 +1,13 @@
-import { Box, InputBase, styled, Stack, Typography, Container } from "@mui/material";
-import { AutoSizer  } from "react-virtualized";
-import { FixedSizeList as List } from 'react-window';
+import {
+  Box,
+  InputBase,
+  styled,
+  Stack,
+  Typography,
+  Container,
+} from "@mui/material";
+import { AutoSizer } from "react-virtualized";
+import { FixedSizeList as List } from "react-window";
 
 import { useSelector, useDispatch } from "react-redux";
 import CityListCard from "./cityList/CityListCard";
@@ -21,8 +28,7 @@ const innerElementType = forwardRef(({ style, ...rest }, ref) => {
         }}
         {...rest}
       />
-      
-      </Container>
+    </Container>
   );
 });
 
@@ -35,28 +41,30 @@ export default function CityList() {
     parent, // Reference to the parent List (instance)
     style, // Style object to be applied to row (to position it);
   }) => (
-    <Box  style={{
-      ...style,
-      top: `${parseFloat(style.top) + 100}px`,
-      height: `${parseFloat(style.height) + 50}px`,
-      
-    }}>
+    <Box
+      style={{
+        ...style,
+        top: `${parseFloat(style.top) + 87}px`,
+        height: `${parseFloat(style.height) + 50}px`,
+      }}
+    >
       <CityListCard data={visibleData[index]} />
     </Box>
   );
 
   return (
-    
-      <AutoSizer style={{width: "1200px", height: "95vh", }}>
-          {({ height, width }) => (
-            <List
-            width={width}
-            height={height}
-            itemCount={visibleData.length}
-            itemSize={100}
-            innerElementType={innerElementType}
-          >{rowRenderer}</List>
-          )}
-      </AutoSizer>
+    <AutoSizer style={{ width: "1200px", height: "95vh" }}>
+      {({ height, width }) => (
+        <List
+          width={width}
+          height={height}
+          itemCount={visibleData.length}
+          itemSize={100}
+          innerElementType={innerElementType}
+        >
+          {rowRenderer}
+        </List>
+      )}
+    </AutoSizer>
   );
 }
