@@ -15,7 +15,7 @@ const theme = createTheme({
     primary: {
       light: "#991bb3", //purpleHover
       main: "#76168a", //purple
-      dark: "#002884",
+      dark: "#2e0836",
       contrastText: "#ffffff",
     },
     secondary: {
