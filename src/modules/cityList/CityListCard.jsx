@@ -35,10 +35,13 @@ export default function CityListCard(props) {
           <Typography>{data[0]}</Typography>
           <Typography>{data[3]}</Typography>
         </Stack>
-        <Box sx={{ width: 200 }}>
-          <Stack spacing={2} flexWrap="wrap">
+        <Box sx={{ width: "300px" }}>
+          <Stack spacing={1} useFlexGap flexWrap="wrap" direction="row">
             <Button variant="outlined" color="secondary" size="small">
               See on map
+            </Button>
+            <Button variant="outlined" color="secondary" size="small">
+              delete
             </Button>
             <Button
               variant="outlined"
@@ -49,9 +52,6 @@ export default function CityListCard(props) {
               }
             >
               I want to visit
-            </Button>
-            <Button variant="outlined" color="secondary" size="small">
-              delete
             </Button>
           </Stack>
         </Box>
