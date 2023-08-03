@@ -13,10 +13,11 @@ const slice = createSlice({
     setDefaultValues: (state) => {
       state = initialState;
     },
+    setSelectedData: (state, action) => {
+      state.selectedData = action.payload;
+    },
     setData: (state, action) => {
       state.data = action.payload;
-    },
-    setSelectedData: (state, action) => {
       state.selectedData = action.payload;
     },
     setVisibleData: (state, action) => {

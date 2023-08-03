@@ -1,3 +1,4 @@
+import "./styles.css";
 import { useEffect } from "react";
 import axios from "axios";
 import { usePapaParse } from "react-papaparse";
@@ -24,7 +25,6 @@ export default function App() {
             const resData = results.data;
             resData.shift();
             dispatch(setData(resData));
-            dispatch(setVisibleData(resData));
           },
         });
       })
@@ -35,7 +35,7 @@ export default function App() {
   }, []);
 
   return (
-    <Box sx={{overflow: "auto", backgroundColor: "primary.dark"}}>
+    <Box sx={{ overflow: "auto" }}>
       {/* <SearchBar />
       <ButtonBar /> */}
       <CityList />
