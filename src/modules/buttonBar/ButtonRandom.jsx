@@ -1,6 +1,5 @@
-import { Box, InputBase, styled, Button } from "@mui/material";
-
+import { Box, InputBase, styled, Button, ToggleButton } from "@mui/material";
 
 export default function ButtonRandom() {
-    return <Button variant="contained">Random</Button>;
+  return <ToggleButton>Random</ToggleButton>;
 }
