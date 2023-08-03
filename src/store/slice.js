@@ -4,6 +4,7 @@ const initialState = {
   data: [],
   selectedData: [],
   visibleData: [],
+  searchingText: "",
 };
 
 const slice = createSlice({
@@ -23,9 +24,13 @@ const slice = createSlice({
       state.data = action.payload;
       state.visibleData = action.payload;
     },
+    setSearchingText: (state, action) => {
+      state.searchingText = action.payload;
+    },
   },
 });
 
-export const { setData, setSelectedData, setVisibleData } = slice.actions;
+export const { setData, setSelectedData, setVisibleData, setSearchingText } =
+  slice.actions;
 
 export default slice.reducer;
