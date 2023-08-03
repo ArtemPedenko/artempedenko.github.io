@@ -4,7 +4,11 @@ import ButtonBar from "./ButtonBar";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { search } from "../utils/index";
-import { setSearchingText, setVisibleData } from "../store/slice";
+import {
+  setVisibleDataCopy,
+  setVisibleData,
+  setSearchingText,
+} from "../store/slice";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -29,14 +33,36 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
 
 export default function SearchBar() {
   const dispatch = useDispatch();
-  const searchingText = useSelector(
-    (state) => state.cityWishList.searchingText
+  //const searchingText = useSelector(
+  //  (state) => state.cityWishList.searchingText
+  //);
+  const visibleData = useSelector((state) => state.cityWishList.visibleData);
+  const visibleDataCopy = useSelector(
+    (state) => state.cityWishList.visibleDataCopy
   );
-  const data = useSelector((state) => state.cityWishList.data);
-
-  useEffect(() => {
-    dispatch(setVisibleData(search(data, searchingText)));
-  }, [searchingText]);
+  function searchFunc(searchingText) {
+    console.log("searchingText = " + searchingText.length);
+    if (searchingText.length === 0) {
+      console.log("ya tut");
+      dispatch(setVisibleDataCopy(visibleData));
+      dispatch(setVisibleData(visibleDataCopy));
+      console.log(visibleDataCopy);
+    } else {
+      console.log(visibleDataCopy);
+      dispatch(setVisibleData(search(visibleData, searchingText)));
+    }
+  }
+  //useEffect(() => {
+  //  console.log("searchingText = " + searchingText);
+  //  if (searchingText === "") {
+  //    console.log("searchingText raven 0");
+  //    dispatch(setVisibleDataCopy(visibleData));
+  //    dispatch(setVisibleData(visibleDataCopy));
+  //    console.log(visibleDataCopy);
+  //  }
+  //  console.log(visibleDataCopy);
+  //  dispatch(setVisibleData(search(visibleData, searchingText)));
+  //}, [searchingText]);
 
   return (
     <Box
@@ -52,7 +78,7 @@ export default function SearchBar() {
         <StyledInputBase
           placeholder="Search…"
           inputProps={{ "aria-label": "search" }}
-          onChange={(e) => dispatch(setSearchingText(e.target.value))}
+          onChange={(e) => searchFunc(e.target.value)}
         />
       </Search>
     </Box>

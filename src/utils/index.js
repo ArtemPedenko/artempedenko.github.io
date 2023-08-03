@@ -7,8 +7,6 @@ const addToSelected = (selectedData, dataElement) => {
   if (count === 0) {
     changedSelectedData.push(dataElement);
   }
-  //console.log(" count = " + count)
-  //console.log(changedSelectedData)
   return changedSelectedData;
 };
 
@@ -16,8 +14,6 @@ const search = (data, text) => {
   if (!text) {
     return data;
   }
-  console.log(data[1][0]);
-  console.log(text);
   return data.filter((city) => {
     return (
       city[0].toLowerCase().includes(text.toLowerCase()) ||

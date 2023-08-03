@@ -5,6 +5,7 @@ const initialState = {
   selectedData: [],
   visibleData: [],
   searchingText: "",
+  visibleDataCopy: [],
 };
 
 const slice = createSlice({
@@ -27,10 +28,18 @@ const slice = createSlice({
     setSearchingText: (state, action) => {
       state.searchingText = action.payload;
     },
+    setVisibleDataCopy: (state, action) => {
+      state.visibleDataCopy = action.payload;
+    },
   },
 });
 
-export const { setData, setSelectedData, setVisibleData, setSearchingText } =
-  slice.actions;
+export const {
+  setData,
+  setSelectedData,
+  setVisibleData,
+  setSearchingText,
+  setVisibleDataCopy,
+} = slice.actions;
 
 export default slice.reducer;
