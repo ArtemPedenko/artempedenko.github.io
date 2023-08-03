@@ -4,7 +4,7 @@ import ButtonBar from "./ButtonBar";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
-  width: "800px",
+  width: "100%",
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -33,7 +33,7 @@ export default function SearchBar() {
     >
       <Search>
         <SearchIconWrapper>
-          <SearchIcon color="secondary"  sx={{ zIndex: 1}}/>
+          <SearchIcon color="secondary" sx={{ zIndex: 1 }} />
         </SearchIconWrapper>
         <StyledInputBase
           placeholder="Search…"

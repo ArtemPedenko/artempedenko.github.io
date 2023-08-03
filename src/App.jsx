@@ -2,7 +2,7 @@ import "./styles.css";
 import { useEffect } from "react";
 import axios from "axios";
 import { usePapaParse } from "react-papaparse";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setData, setVisibleData } from "./store/slice";
 import SearchBar from "./modules/SearchBar";
 import ButtonBar from "./modules/ButtonBar";
@@ -12,6 +12,8 @@ import { Box } from "@mui/material";
 export default function App() {
   const dispatch = useDispatch();
   const { readString } = usePapaParse();
+  const selectedData = useSelector((state) => state.cityWishList.selectedData);
+  const visibleData = useSelector((state) => state.cityWishList.visibleData);
 
   useEffect(() => {
     axios
@@ -23,6 +25,7 @@ export default function App() {
           worker: true,
           complete: (results) => {
             const resData = results.data;
+            console.log("useEffect1");
             resData.shift();
             dispatch(setData(resData));
           },
@@ -33,6 +36,10 @@ export default function App() {
         console.log(error);
       });
   }, []);
+
+  useEffect(() => {
+    console.log("useEffect2");
+  }, [visibleData]);
 
   return (
     <Box sx={{ overflow: "auto" }}>
