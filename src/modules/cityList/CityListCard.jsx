@@ -12,6 +12,7 @@ import { addToSelected } from "../../utils";
 import { setSelectedData } from "../../store/slice";
 
 export default function CityListCard(props) {
+  const { data } = props;
   const dispatch = useDispatch();
   const selectedData = useSelector((state) => state.cityWishList.selectedData);
 
@@ -30,8 +31,8 @@ export default function CityListCard(props) {
       }}
     >
       <Stack spacing={2}>
-        <Typography>{props.data[0]}</Typography>
-        <Typography>{props.data[3]}</Typography>
+        <Typography>{data[0]}</Typography>
+        <Typography>{data[3]}</Typography>
       </Stack>
       <Stack spacing={2}>
         <Button variant="outlined" color="secondary" size="small">
@@ -42,7 +43,7 @@ export default function CityListCard(props) {
           color="secondary"
           size="small"
           onClick={() =>
-            dispatch(setSelectedData(addToSelected(selectedData, props.data)))
+            dispatch(setSelectedData(addToSelected(selectedData, data)))
           }
         >
           I want to visit
