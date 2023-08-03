@@ -59,7 +59,7 @@ export default function CityList() {
           width={width}
           height={height}
           itemCount={visibleData.length}
-          itemSize={100}
+          itemSize={200}
           innerElementType={innerElementType}
         >
           {rowRenderer}

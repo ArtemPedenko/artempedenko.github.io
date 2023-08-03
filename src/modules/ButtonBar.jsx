@@ -30,7 +30,15 @@ export default function ButtonBar() {
   }, [currentList]);
 
   return (
-    <ToggleButtonGroup exclusive onChange={handleChange}>
+    <ToggleButtonGroup
+      exclusive
+      onChange={handleChange}
+      color="primary"
+      sx={{
+        ".MuiToggleButton-root": { backgroundColor: "red" },
+        ".Mui-selected": { backgroundColor: "white" },
+      }}
+    >
       <ToggleButton value="all">all</ToggleButton>
       <ToggleButton value="selected">selected</ToggleButton>
       <ToggleButton value="random">random</ToggleButton>
