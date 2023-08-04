@@ -1,4 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import MapModal from "../../components/MapModal";
 import {
   Box,
   InputBase,
@@ -15,6 +17,10 @@ export default function CityListCard(props) {
   const { data } = props;
   const dispatch = useDispatch();
   const selectedData = useSelector((state) => state.cityWishList.selectedData);
+
+  const [open, setOpen] = useState(false);
+  const modalOpen = () => setOpen(true);
+  const modalClose = () => setOpen(false);
 
   return (
     <>
@@ -37,7 +43,12 @@ export default function CityListCard(props) {
         </Stack>
         <Box sx={{ width: "300px" }}>
           <Stack spacing={1} useFlexGap flexWrap="wrap" direction="row">
-            <Button variant="outlined" color="secondary" size="small">
+            <Button
+              variant="outlined"
+              color="secondary"
+              size="small"
+              onClick={modalOpen}
+            >
               See on map
             </Button>
             <Button variant="outlined" color="secondary" size="small">
@@ -56,6 +67,7 @@ export default function CityListCard(props) {
           </Stack>
         </Box>
       </Container>
+      <MapModal open={open} close={modalClose} />
     </>
   );
 }
