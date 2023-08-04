@@ -76,9 +76,9 @@ const search = (data, filter) => {
       searchingData1.push(data[i]);
     }
   }
-  console.log(searchingData1[0][0]);
-  searchingData1[0][0] = "zalupa";
-  console.log(searchingData1);
+  //console.log(searchingData1[0][0]);
+  //searchingData1[0][0] = "zalupa";
+  //console.log(searchingData1);
   return searchingData;
 };
 
