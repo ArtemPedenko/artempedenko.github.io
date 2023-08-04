@@ -44,7 +44,7 @@ const search = (data, filter) => {
   if (!filter) {
     return data;
   }
-  return data.filter((city) => {
+  const searchingData = data.filter((city) => {
     //if (city[0].toLowerCase().includes(filter.toLowerCase())) {
     //  console.log("1 " + city[0]);
     //  console.log(city);
@@ -65,6 +65,21 @@ const search = (data, filter) => {
       city[3].toLowerCase().includes(filter.toLowerCase())
     );
   });
+
+  let searchingData1 = [];
+
+  for (let i = 0; i < data.length; i++) {
+    if (
+      data[i][0].toLowerCase().includes(filter.toLowerCase()) ||
+      data[i][3].toLowerCase().includes(filter.toLowerCase())
+    ) {
+      searchingData1.push(data[i]);
+    }
+  }
+  console.log(searchingData1[0][0]);
+  searchingData1[0][0] = "zalupa";
+  console.log(searchingData1);
+  return searchingData;
 };
 
 export { addToSelected, search };
