@@ -31,6 +31,7 @@ const slice = createSlice({
     setCurrentList: (state, action) => {
       state.currentList = action.payload;
     },
+    
   },
 });
 

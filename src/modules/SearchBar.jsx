@@ -2,7 +2,7 @@ import { Box, InputBase, styled } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useDispatch, useSelector } from "react-redux";
 import { search } from "../utils/index";
-import { setVisibleData, setCurrentList } from "../store/slice";
+import { setVisibleData, setCurrentList, setSearchingText } from "../store/slice";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -52,7 +52,7 @@ export default function SearchBar() {
         <StyledInputBase
           placeholder="Search…"
           inputProps={{ "aria-label": "search" }}
-          onChange={(e) => searchFunc(e.target.value)}
+          onChange={(e) => dispatch(setSearchingText(e.target.value))}
         />
       </Search>
     </Box>

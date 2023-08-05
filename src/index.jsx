@@ -14,7 +14,6 @@ const root = createRoot(rootElement);
 const clientSideEmotionCache = createEmotionCache();
 
 root.render(
-  <StrictMode>
     <CacheProvider value={clientSideEmotionCache}>
       <ThemeProvider theme={theme}>
         <Provider store={store}>
@@ -22,5 +21,4 @@ root.render(
         </Provider>
       </ThemeProvider>
     </CacheProvider>
-  </StrictMode>
 );

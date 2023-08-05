@@ -10,46 +10,46 @@ const addToSelected = (selectedData, dataElement) => {
   return changedSelectedData;
 };
 
-const HighlightText = (city, text) => {
-  console.log("2 " + city);
-  console.log("3 " + text);
-  const regexp = new RegExp(text, "ig");
-  const matchValue = city.match(regexp);
-  console.log("4 " + matchValue);
-  const splited = city.split(regexp);
-  const highlight = (
-    <span style={{ backgroundColor: "red" }}>{matchValue[0]}</span>
-  );
 
-  function qq(item, index) {
-    if (index < splited.length - 1) {
-      console.log("5 " + index);
-      return [item, highlight];
-    } else {
-      return item;
-    }
-  }
 
+function Lighter({ filter, str }) {
+  if (!filter) return str;
+  const regExp = new RegExp(filter, 'ig');
+  const matchValue = str.match(regExp);
   if (matchValue) {
-    console.log("6 ");
-    city = splited.map((item, index) => qq(item, index));
-    console.log("7 ");
+    return str.split(regExp).map((symbol, index, array) => {
+      if (index < array.length - 1) {
+        const c = matchValue.shift();
+        return (
+          <span key={index} >
+            {symbol}
+            <span
+              style={{
+                borderRadius: '5px',
+                background: '#c31432',
+              }}
+            >
+              {c}
+            </span>
+          </span>
+        );
+      }
+      return symbol;
+    });
   }
-  console.log(8);
-  console.log(city);
-  return city;
-};
+  return str;
+}
 
 const search = (data, filter) => {
   if (!filter) {
     return data;
   }
   const searchingData = data.filter((city) => {
-    //if (city[0].toLowerCase().includes(filter.toLowerCase())) {
+    if (city[0].toLowerCase().includes(filter.toLowerCase())) {
     //  console.log("1 " + city[0]);
     //  console.log(city);
     //  //city[0] = "zqlupa";
-    //  //city[0] = HighlightText(city[0], filter);
+    HighlightText(city[0], filter);
     //  // city[0] = "zalupa";
     //  return city;
     //}
@@ -58,7 +58,7 @@ const search = (data, filter) => {
     //  // city[3] = "zalupa";
     //
     //  return city;
-    //}
+    }
     //return filteredData;
     return (
       city[0].toLowerCase().includes(filter.toLowerCase()) ||
@@ -67,6 +67,7 @@ const search = (data, filter) => {
   });
 
   let searchingData1 = [];
+  let searchingData2 = []
 
   for (let i = 0; i < data.length; i++) {
     if (
@@ -76,10 +77,11 @@ const search = (data, filter) => {
       searchingData1.push(data[i]);
     }
   }
-  //console.log(searchingData1[0][0]);
-  //searchingData1[0][0] = "zalupa";
+  console.log(searchingData1);
+  
+  //searchingData1[0] = "zalupa";
   //console.log(searchingData1);
   return searchingData;
 };
 
-export { addToSelected, search };
+export { addToSelected, search, Lighter };

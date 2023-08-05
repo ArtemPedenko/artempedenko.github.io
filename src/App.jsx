@@ -8,6 +8,8 @@ import SearchBar from "./modules/SearchBar";
 import ButtonBar from "./modules/ButtonBar";
 import CityList from "./modules/CityList";
 import { Box } from "@mui/material";
+import { YMaps, Map, ZoomControl } from 'react-yandex-maps';
+
 
 export default function App() {
   const dispatch = useDispatch();
@@ -42,10 +44,20 @@ export default function App() {
   }, [visibleData]);
 
   return (
+    <>
     <Box sx={{ overflow: "auto" }}>
-      {/* <SearchBar />
-      <ButtonBar /> */}
-      <CityList />
-    </Box>
+     <CityList /> 
+      
+    </Box> 
+   <YMaps query={{ apikey: "e44dac90-043e-402c-8f0d-01fcbf571ff5" }}>
+        <Map
+          width="1000px"
+          height="500px"
+          defaultState={{ center: [55.74, 37.62], zoom: 11 }}>
+           
+          <ZoomControl />
+        </Map>
+      </YMaps> 
+    </>
   );
 }

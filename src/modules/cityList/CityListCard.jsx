@@ -12,11 +12,14 @@ import {
 } from "@mui/material";
 import { addToSelected } from "../../utils";
 import { setSelectedData } from "../../store/slice";
+import { HighlightText, Lighter } from "../../utils";
 
 export default function CityListCard(props) {
   const { data } = props;
   const dispatch = useDispatch();
   const selectedData = useSelector((state) => state.cityWishList.selectedData);
+  const searchingText = useSelector((state) => state.cityWishList.searchingText);
+
 
   const [open, setOpen] = useState(false);
   const modalOpen = () => setOpen(true);
@@ -38,7 +41,9 @@ export default function CityListCard(props) {
         }}
       >
         <Stack spacing={2}>
-          <Typography>{data[0]}</Typography>
+          <Typography>
+            <Lighter  str={data[0]} filter={searchingText}/>
+          </Typography>
           <Typography>{data[3]}</Typography>
         </Stack>
         <Box sx={{ width: "300px" }}>
