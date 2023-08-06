@@ -1,8 +1,8 @@
+import { usePapaParse } from "react-papaparse";
+
+
 const addToSelected = (selectedData, dataElement) => {
-  console.log("selectedData")
-  console.log(selectedData)
-  console.log("dataElement")
-  console.log(dataElement)
+
 
   const changedSelectedData = [...selectedData];
   let count = 0;
@@ -59,4 +59,20 @@ const search = (data, filter) => {
   });
 };
 
-export { addToSelected, search, Lighter };
+const dataParse = (data) => {
+  const { readString } = usePapaParse();
+  let qqq = [];
+  readString(data, {
+    header: true,
+    worker: true,
+    complete: (results) => {
+      const resData = results.data;
+
+    },
+  });
+  console.log(resData)
+
+  return resData;
+}
+
+export { addToSelected, search, Lighter, dataParse };

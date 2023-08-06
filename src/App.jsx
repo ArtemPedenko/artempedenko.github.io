@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { usePapaParse } from "react-papaparse";
 import { useDispatch, useSelector } from "react-redux";
-import { setData, setVisibleData } from "./store/slice";
+import { setData, setVisibleData, getCityDataRequest } from "./store/slice";
 import CityList from "./modules/CityList";
 import { Box } from "@mui/material";
 import { YMaps, Map, ZoomControl } from 'react-yandex-maps';
@@ -18,24 +18,25 @@ export default function App() {
 
   useEffect(() => {
     console.log("useEffect1")
-    axios
-      .get(
-        "https://gist.githubusercontent.com/curran/13d30e855d48cdd6f22acdf0afe27286/raw/0635f14817ec634833bb904a47594cc2f5f9dbf8/worldcities_clean.csv"
-      )
-      .then(function (response) {
-        readString(response.data, {
-          header: true,
-          worker: true,
-          complete: (results) => {
-            const resData = results.data;
-            dispatch(setData(resData));
-          },
-        });
-      })
-      .catch(function (error) {
-        console.log("error");
-        console.log(error);
-      });
+    // axios
+    //   .get(
+    //     "https://gist.githubusercontent.com/curran/13d30e855d48cdd6f22acdf0afe27286/raw/0635f14817ec634833bb904a47594cc2f5f9dbf8/worldcities_clean.csv"
+    //   )
+    //   .then(function (response) {
+    //     readString(response.data, {
+    //       header: true,
+    //       worker: true,
+    //       complete: (results) => {
+    //         const resData = results.data;
+    //         dispatch(setData(resData));
+    //       },
+    //     });
+    //   })
+    //   .catch(function (error) {
+    //     console.log("error");
+    //     console.log(error);
+    //   });
+    dispatch(getCityDataRequest())
   }, []);
 
   useEffect(() => {

@@ -6,6 +6,7 @@ const initialState = {
   visibleData: [],
   searchingText: "",
   currentList: "all",
+  loading: false,
 };
 
 const slice = createSlice({
@@ -15,6 +16,9 @@ const slice = createSlice({
     setDefaultValues: (state) => {
       state = initialState;
     },
+    setLoading: (state, action) => {
+      state.selectedData = action.payload;
+    },
     setSelectedData: (state, action) => {
       state.selectedData = action.payload;
     },
@@ -23,7 +27,6 @@ const slice = createSlice({
     },
     setData: (state, action) => {
       state.data = action.payload;
-      state.visibleData = action.payload;
     },
     setSearchingText: (state, action) => {
       state.searchingText = action.payload;
@@ -31,7 +34,18 @@ const slice = createSlice({
     setCurrentList: (state, action) => {
       state.currentList = action.payload;
     },
-    
+    getCityDataRequest: (state, action) => {
+      state.loading = true;
+    },
+    getCityDataSuccess: (state, action) => {
+      state.loading = false;
+      state.data = action.payload;
+      state.visibleData = action.payload;
+    },
+    getCityDataFailure: (state, action) => {
+      state.loading = false;
+    },
+
   },
 });
 
@@ -41,6 +55,9 @@ export const {
   setVisibleData,
   setSearchingText,
   setCurrentList,
+  getCityDataRequest,
+  getCityDataSuccess,
+  getCityDataFailure
 } = slice.actions;
 
 export default slice.reducer;
