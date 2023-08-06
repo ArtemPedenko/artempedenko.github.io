@@ -42,10 +42,6 @@ export default function ButtonBar() {
       <ToggleButton value="all">all</ToggleButton>
       <ToggleButton value="selected">selected</ToggleButton>
       <ToggleButton value="random">random</ToggleButton>
-
-      {/* <ButtonAll />
-      <ButtonSelected />
-      <ButtonRandom /> */}
     </ToggleButtonGroup>
   );
 }

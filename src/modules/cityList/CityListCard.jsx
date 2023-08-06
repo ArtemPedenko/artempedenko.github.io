@@ -43,10 +43,10 @@ export default function CityListCard(props) {
       >
         <Stack spacing={2}>
           <Typography>
-            <Lighter  str={data.city} filter={searchingText}/>
+            <Lighter str={data.city} filter={searchingText} />
           </Typography>
           <Typography>
-          <Lighter  str={data.country} filter={searchingText}/>
+            <Lighter str={data.country} filter={searchingText} />
           </Typography>
         </Stack>
         <Box >
@@ -59,24 +59,21 @@ export default function CityListCard(props) {
             >
               See on map
             </Button>
-            
-            
-
-              {currentList === "all" ? 
-            <Button
-            variant="outlined"
-            color="secondary"
-            size="small"
-            onClick={() =>
-              dispatch(setSelectedData(addToSelected(selectedData, data)))
-            }
-          >
-            I want to visit
-          </Button>
-          :
-          <Button variant="outlined" color="secondary" size="small" >
-          delete
-        </Button>
+            {currentList === "all" ?
+              <Button
+                variant="outlined"
+                color="secondary"
+                size="small"
+                onClick={() =>
+                  dispatch(setSelectedData(addToSelected(selectedData, data)))
+                }
+              >
+                I want to visit
+              </Button>
+              :
+              <Button variant="outlined" color="secondary" size="small" >
+                delete
+              </Button>
             }
 
           </Stack>
