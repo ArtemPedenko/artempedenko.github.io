@@ -21,6 +21,7 @@ export default function App() {
   
 
   useEffect(() => {
+    console.log("useEffect1")
     axios
       .get(
         "https://gist.githubusercontent.com/curran/13d30e855d48cdd6f22acdf0afe27286/raw/0635f14817ec634833bb904a47594cc2f5f9dbf8/worldcities_clean.csv"
@@ -31,7 +32,6 @@ export default function App() {
           worker: true,
           complete: (results) => {
             const resData = results.data;
-            console.log(resData[0]);
             dispatch(setData(resData));
           },
         });

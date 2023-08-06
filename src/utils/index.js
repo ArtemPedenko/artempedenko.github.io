@@ -1,8 +1,13 @@
 const addToSelected = (selectedData, dataElement) => {
+  console.log("selectedData")
+  console.log(selectedData)
+  console.log("dataElement")
+  console.log(dataElement)
+
   const changedSelectedData = [...selectedData];
   let count = 0;
   selectedData.map((item) => {
-    if (item[0] === dataElement[0]) count += 1;
+    if (item.city === dataElement.city) count += 1;
   });
   if (count === 0) {
     changedSelectedData.push(dataElement);
