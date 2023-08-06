@@ -67,12 +67,10 @@ const dataParse = (data) => {
     worker: true,
     complete: (results) => {
       const resData = results.data;
+      return resData;
 
     },
   });
-  console.log(resData)
-
-  return resData;
 }
 
 export { addToSelected, search, Lighter, dataParse };
