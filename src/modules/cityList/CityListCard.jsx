@@ -16,6 +16,7 @@ import { HighlightText, Lighter } from "../../utils";
 
 export default function CityListCard(props) {
   const { data } = props;
+  //console.log(data)
   const dispatch = useDispatch();
   const selectedData = useSelector((state) => state.cityWishList.selectedData);
   const searchingText = useSelector((state) => state.cityWishList.searchingText);
@@ -42,9 +43,11 @@ export default function CityListCard(props) {
       >
         <Stack spacing={2}>
           <Typography>
-            <Lighter  str={data[0]} filter={searchingText}/>
+            <Lighter  str={data.city} filter={searchingText}/>
           </Typography>
-          <Typography>{data[3]}</Typography>
+          <Typography>
+          <Lighter  str={data.country} filter={searchingText}/>
+          </Typography>
         </Stack>
         <Box sx={{ width: "300px" }}>
           <Stack spacing={1} useFlexGap flexWrap="wrap" direction="row">

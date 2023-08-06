@@ -30,13 +30,15 @@ export default function SearchBar() {
   const data = useSelector((state) => state.cityWishList.data);
   const selectedData = useSelector((state) => state.cityWishList.selectedData);
   const currentList = useSelector((state) => state.cityWishList.currentList);
-  function searchFunc(searchingText) {
+  function searchFunc(filter) {
+    dispatch(setSearchingText(filter))
     if (currentList === "all") {
-      dispatch(setVisibleData(search(data, searchingText)));
+      dispatch(setVisibleData(search(data, filter)));
     } else if (currentList === "selected") {
-      dispatch(setVisibleData(search(selectedData, searchingText)));
+      dispatch(setVisibleData(search(selectedData, filter)));
     }
   }
+
 
   return (
     <Box
@@ -52,7 +54,7 @@ export default function SearchBar() {
         <StyledInputBase
           placeholder="Search…"
           inputProps={{ "aria-label": "search" }}
-          onChange={(e) => dispatch(setSearchingText(e.target.value))}
+          onChange={(e) => searchFunc(e.target.value)}
         />
       </Search>
     </Box>

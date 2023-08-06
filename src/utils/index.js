@@ -44,44 +44,14 @@ const search = (data, filter) => {
   if (!filter) {
     return data;
   }
-  const searchingData = data.filter((city) => {
-    if (city[0].toLowerCase().includes(filter.toLowerCase())) {
-    //  console.log("1 " + city[0]);
-    //  console.log(city);
-    //  //city[0] = "zqlupa";
-    HighlightText(city[0], filter);
-    //  // city[0] = "zalupa";
-    //  return city;
-    //}
-    //if (city[3].toLowerCase().includes(filter.toLowerCase())) {
-    //  //city[3] = HighlightText(filter, city[3]);
-    //  // city[3] = "zalupa";
-    //
-    //  return city;
-    }
-    //return filteredData;
+  return data.filter((data) => {
+   
+    
     return (
-      city[0].toLowerCase().includes(filter.toLowerCase()) ||
-      city[3].toLowerCase().includes(filter.toLowerCase())
+      data.city.toLowerCase().includes(filter.toLowerCase()) ||
+      data.country.toLowerCase().includes(filter.toLowerCase())
     );
   });
-
-  let searchingData1 = [];
-  let searchingData2 = []
-
-  for (let i = 0; i < data.length; i++) {
-    if (
-      data[i][0].toLowerCase().includes(filter.toLowerCase()) ||
-      data[i][3].toLowerCase().includes(filter.toLowerCase())
-    ) {
-      searchingData1.push(data[i]);
-    }
-  }
-  console.log(searchingData1);
-  
-  //searchingData1[0] = "zalupa";
-  //console.log(searchingData1);
-  return searchingData;
 };
 
 export { addToSelected, search, Lighter };

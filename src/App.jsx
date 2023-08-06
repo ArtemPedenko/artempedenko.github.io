@@ -16,6 +16,9 @@ export default function App() {
   const { readString } = usePapaParse();
   const selectedData = useSelector((state) => state.cityWishList.selectedData);
   const visibleData = useSelector((state) => state.cityWishList.visibleData);
+  const searchingText = useSelector((state) => state.cityWishList.searchingText);
+
+  
 
   useEffect(() => {
     axios
@@ -24,11 +27,11 @@ export default function App() {
       )
       .then(function (response) {
         readString(response.data, {
+          header: true,
           worker: true,
           complete: (results) => {
             const resData = results.data;
-            //console.log("useEffect1");
-            resData.shift();
+            console.log(resData[0]);
             dispatch(setData(resData));
           },
         });
@@ -41,7 +44,7 @@ export default function App() {
 
   useEffect(() => {
     //console.log("useEffect2");
-  }, [visibleData]);
+  }, [searchingText]);
 
   return (
     <>
