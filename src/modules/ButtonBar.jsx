@@ -2,15 +2,8 @@ import * as React from "react";
 import {
   ToggleButton,
   ToggleButtonGroup,
-  Box,
-  InputBase,
-  styled,
-  Stack,
 } from "@mui/material";
 import { useEffect } from "react";
-import ButtonAll from "./buttonBar/ButtonAll";
-import ButtonRandom from "./buttonBar/ButtonRandom";
-import ButtonSelected from "./buttonBar/ButtonSelected";
 import { setVisibleData, setCurrentList } from "../store/slice";
 import { useSelector, useDispatch } from "react-redux";
 
