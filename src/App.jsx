@@ -4,8 +4,6 @@ import axios from "axios";
 import { usePapaParse } from "react-papaparse";
 import { useDispatch, useSelector } from "react-redux";
 import { setData, setVisibleData } from "./store/slice";
-import SearchBar from "./modules/SearchBar";
-import ButtonBar from "./modules/ButtonBar";
 import CityList from "./modules/CityList";
 import { Box } from "@mui/material";
 import { YMaps, Map, ZoomControl } from 'react-yandex-maps';
@@ -14,8 +12,6 @@ import { YMaps, Map, ZoomControl } from 'react-yandex-maps';
 export default function App() {
   const dispatch = useDispatch();
   const { readString } = usePapaParse();
-  const selectedData = useSelector((state) => state.cityWishList.selectedData);
-  const visibleData = useSelector((state) => state.cityWishList.visibleData);
   const searchingText = useSelector((state) => state.cityWishList.searchingText);
 
 
@@ -43,7 +39,6 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    //console.log("useEffect2");
   }, [searchingText]);
 
   return (

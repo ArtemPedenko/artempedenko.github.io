@@ -50,8 +50,8 @@ const search = (data, filter) => {
     return data;
   }
   return data.filter((data) => {
-   
-    
+
+
     return (
       data.city.toLowerCase().includes(filter.toLowerCase()) ||
       data.country.toLowerCase().includes(filter.toLowerCase())

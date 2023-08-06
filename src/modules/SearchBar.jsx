@@ -2,7 +2,7 @@ import { Box, InputBase, styled } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useDispatch, useSelector } from "react-redux";
 import { search } from "../utils/index";
-import { setVisibleData, setCurrentList, setSearchingText } from "../store/slice";
+import { setVisibleData, setSearchingText } from "../store/slice";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
