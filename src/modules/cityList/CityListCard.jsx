@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import MapModal from "../../components/MapModal";
 import {
   Box,
@@ -16,8 +16,6 @@ import { HighlightText, Lighter } from "../../utils";
 
 export default function CityListCard(props) {
   const { data } = props;
-  //console.log(data)
-  const dispatch = useDispatch();
   const selectedData = useSelector((state) => state.cityWishList.selectedData);
   const searchingText = useSelector((state) => state.cityWishList.searchingText);
   const currentList = useSelector((state) => state.cityWishList.currentList);
