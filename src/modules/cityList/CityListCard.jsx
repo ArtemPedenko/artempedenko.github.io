@@ -20,7 +20,7 @@ export default function CityListCard(props) {
   const dispatch = useDispatch();
   const selectedData = useSelector((state) => state.cityWishList.selectedData);
   const searchingText = useSelector((state) => state.cityWishList.searchingText);
-
+  const currentList = useSelector((state) => state.cityWishList.currentList);
 
   const [open, setOpen] = useState(false);
   const modalOpen = () => setOpen(true);
@@ -49,8 +49,8 @@ export default function CityListCard(props) {
           <Lighter  str={data.country} filter={searchingText}/>
           </Typography>
         </Stack>
-        <Box sx={{ width: "300px" }}>
-          <Stack spacing={1} useFlexGap flexWrap="wrap" direction="row">
+        <Box >
+          <Stack spacing={1}   >
             <Button
               variant="outlined"
               color="secondary"
@@ -59,19 +59,26 @@ export default function CityListCard(props) {
             >
               See on map
             </Button>
-            <Button variant="outlined" color="secondary" size="small">
-              delete
-            </Button>
+            
+            
+
+              {currentList === "all" ? 
             <Button
-              variant="outlined"
-              color="secondary"
-              size="small"
-              onClick={() =>
-                dispatch(setSelectedData(addToSelected(selectedData, data)))
-              }
-            >
-              I want to visit
-            </Button>
+            variant="outlined"
+            color="secondary"
+            size="small"
+            onClick={() =>
+              dispatch(setSelectedData(addToSelected(selectedData, data)))
+            }
+          >
+            I want to visit
+          </Button>
+          :
+          <Button variant="outlined" color="secondary" size="small" >
+          delete
+        </Button>
+            }
+
           </Stack>
         </Box>
       </Container>
