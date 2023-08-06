@@ -16,6 +16,7 @@ import { HighlightText, Lighter } from "../../utils";
 
 export default function CityListCard(props) {
   const { data } = props;
+  const dispatch = useDispatch();
   const selectedData = useSelector((state) => state.cityWishList.selectedData);
   const searchingText = useSelector((state) => state.cityWishList.searchingText);
   const currentList = useSelector((state) => state.cityWishList.currentList);
