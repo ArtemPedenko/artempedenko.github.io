@@ -67,10 +67,11 @@ const dataParse = (data) => {
     worker: true,
     complete: (results) => {
       const resData = results.data;
-      return resData;
+      //resData.map((item) => qqq.push(item))
 
     },
   });
+  return qqq;
 }
 
 export { addToSelected, search, Lighter, dataParse };
