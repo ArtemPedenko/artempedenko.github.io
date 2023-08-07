@@ -14,6 +14,8 @@ import { addToSelected, removeFromSelected } from "../../utils";
 import { setSelectedData, setVisibleData } from "../../store/slice";
 import { HighlightText, Lighter } from "../../utils";
 
+
+
 export default function CityListCard(props) {
   const { data } = props;
   const dispatch = useDispatch();

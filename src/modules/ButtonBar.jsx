@@ -1,11 +1,19 @@
-import * as React from "react";
 import {
   ToggleButton,
   ToggleButtonGroup,
+  styled,
+  Stack,
+  Button,
+  Divider,
 } from "@mui/material";
 import { useEffect } from "react";
 import { setVisibleData, setCurrentList } from "../store/slice";
 import { useSelector, useDispatch } from "react-redux";
+
+const StyledButton = styled(ToggleButton)(({ theme }) => ({
+  backgroundColor: "#76168a",
+  color: "white",
+}));
 
 export default function ButtonBar() {
   const dispatch = useDispatch();
@@ -23,18 +31,28 @@ export default function ButtonBar() {
   }, [currentList]);
 
   return (
-    <ToggleButtonGroup
-      exclusive
-      onChange={handleChange}
-      color="primary"
-      sx={{
-        ".MuiToggleButton-root": { backgroundColor: "red" },
-        ".Mui-selected": { backgroundColor: "white" },
-      }}
-    >
-      <ToggleButton value="all">all</ToggleButton>
-      <ToggleButton value="selected">selected</ToggleButton>
-      <ToggleButton value="random">random</ToggleButton>
-    </ToggleButtonGroup>
+    <Stack direction="row" gap={2} mt="5px">
+      <ToggleButtonGroup
+        exclusive
+        value={currentList}
+        onChange={handleChange}
+        sx={{
+          ".MuiToggleButton-root.Mui-selected": {
+            backgroundColor: "#ba33d6",
+            color: "white",
+          },
+        }}
+      >
+        <StyledButton value="all">all</StyledButton>
+        <StyledButton value="selected">selected</StyledButton>
+      </ToggleButtonGroup>
+      <Button
+        variant="outlined"
+        color="secondary"
+        sx={{ backgroundColor: "primary.main", borderColor: "primary.main" }}
+      >
+        random
+      </Button>
+    </Stack>
   );
 }

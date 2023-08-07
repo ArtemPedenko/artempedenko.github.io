@@ -12,7 +12,7 @@ const theme = createTheme({
     },
     caption: {
       backgroundColor: "yellow",
-    }
+    },
   },
   palette: {
     primary: {
