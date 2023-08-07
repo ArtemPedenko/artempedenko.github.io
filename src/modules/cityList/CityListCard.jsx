@@ -18,7 +18,9 @@ export default function CityListCard(props) {
   const { data } = props;
   const dispatch = useDispatch();
   const selectedData = useSelector((state) => state.cityWishList.selectedData);
-  const searchingText = useSelector((state) => state.cityWishList.searchingText);
+  const searchingText = useSelector(
+    (state) => state.cityWishList.searchingText
+  );
   const currentList = useSelector((state) => state.cityWishList.currentList);
 
   const [open, setOpen] = useState(false);
@@ -48,8 +50,8 @@ export default function CityListCard(props) {
             <Lighter str={data.country} filter={searchingText} />
           </Typography>
         </Stack>
-        <Box >
-          <Stack spacing={1}   >
+        <Box>
+          <Stack spacing={1}>
             <Button
               variant="outlined"
               color="secondary"
@@ -58,7 +60,7 @@ export default function CityListCard(props) {
             >
               See on map
             </Button>
-            {currentList === "all" ?
+            {currentList === "all" ? (
               <Button
                 variant="outlined"
                 color="secondary"
@@ -69,16 +71,15 @@ export default function CityListCard(props) {
               >
                 I want to visit
               </Button>
-              :
-              <Button variant="outlined" color="secondary" size="small" >
+            ) : (
+              <Button variant="outlined" color="secondary" size="small">
                 delete
               </Button>
-            }
-
+            )}
           </Stack>
         </Box>
       </Container>
-      <MapModal open={open} close={modalClose} />
+      <MapModal open={open} close={modalClose} lat={data.lat} lng={data.lng} />
     </>
   );
 }

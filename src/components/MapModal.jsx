@@ -1,5 +1,5 @@
 import { Modal, Box } from "@mui/material";
-import { YMaps, Map, ZoomControl } from 'react-yandex-maps';
+import YandexMap from "./YandexMap";
 
 const style = {
   position: "absolute",
@@ -13,11 +13,12 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
-
 export default function MapModal(props) {
+  const { open, close, lat, lng } = props;
   return (
-    <Modal keepMounted open={props.open} onClose={props.close}>
+    <Modal keepMounted open={open} onClose={close}>
       <Box sx={style}>
+        <YandexMap lat={lat} lng={lng} />
       </Box>
     </Modal>
   );
