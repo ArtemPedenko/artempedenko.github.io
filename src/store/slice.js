@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
+import reject from 'lodash/reject';
 
 const initialState = {
   data: [],
   selectedData: [],
   visibleData: [],
   searchingText: "",
-  currentList: "all",
+  currentStatus: "all",
   loading: false,
   unparsedData: []
 };
@@ -23,6 +24,12 @@ const slice = createSlice({
     setSelectedData: (state, action) => {
       state.selectedData = action.payload;
     },
+    addToSelectedData: (state, action) => {
+      state.selectedData.push(action.payload);
+    },
+    removeFromSelectedData: (state, action) => {
+      state.selectedData = reject(state.selectedData, action.payload);
+    },
     setVisibleData: (state, action) => {
       state.visibleData = action.payload;
     },
@@ -32,8 +39,8 @@ const slice = createSlice({
     setSearchingText: (state, action) => {
       state.searchingText = action.payload;
     },
-    setCurrentList: (state, action) => {
-      state.currentList = action.payload;
+    setCurrentStatus: (state, action) => {
+      state.currentStatus = action.payload;
     },
     getCityDataRequest: (state, action) => {
       state.loading = true;
@@ -58,11 +65,13 @@ export const {
   setSelectedData,
   setVisibleData,
   setSearchingText,
-  setCurrentList,
+  setCurrentStatus,
   getCityDataRequest,
   getCityDataSuccess,
   getCityDataFailure,
-  setUnparsedData
+  setUnparsedData,
+  addToSelectedData,
+  removeFromSelectedData
 } = slice.actions;
 
 export default slice.reducer;

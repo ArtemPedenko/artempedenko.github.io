@@ -5,9 +5,9 @@ import { usePapaParse } from "react-papaparse";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setData,
-  setVisibleData,
   getCityDataRequest,
   getCityDataSuccess,
+  setCurrentStatus
 } from "./store/slice";
 import CityList from "./modules/CityList";
 import { Box } from "@mui/material";
@@ -19,41 +19,26 @@ export default function App() {
   const searchingText = useSelector(
     (state) => state.cityWishList.searchingText
   );
+  const data = useSelector((state) => state.cityWishList.data);
   const unparsedData = useSelector((state) => state.cityWishList.unparsedData);
-  const currentList = useSelector((state) => state.cityWishList.currentList);
+  const currentStatus = useSelector((state) => state.cityWishList.currentStatus);
   const selectedData = useSelector((state) => state.cityWishList.selectedData);
 
-  useEffect(() => {
-    //dispatch(getCityDataRequest());
-    axios
-      .get(
-        "https://gist.githubusercontent.com/curran/13d30e855d48cdd6f22acdf0afe27286/raw/0635f14817ec634833bb904a47594cc2f5f9dbf8/worldcities_clean.csv"
-      )
-      .then(function (response) {
-        readString(response.data, {
-          header: true,
-          worker: true,
-          complete: (results) => {
-            const resData = results.data;
-            dispatch(setData(resData));
-            dispatch(setVisibleData(resData));
-          },
-        });
-      })
-      .catch(function (error) {
-        console.log("error");
-        console.log(error);
-      });
-  }, []);
 
   useEffect(() => {
-    console.log("useEffect2");
-  }, [searchingText, selectedData]);
+    dispatch(getCityDataRequest());
+  }, []);
+
+
+
+  //useEffect(() => {
+  //}, [searchingText]);
 
   return (
     <>
       <Box sx={{ overflow: "auto" }}>
-        <CityList />
+        {currentStatus === "all" && <CityList visibleData={data} />}
+        {currentStatus === "selected" && <CityList visibleData={selectedData} />}
       </Box>
     </>
   );

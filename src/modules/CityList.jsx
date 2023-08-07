@@ -8,7 +8,6 @@ import {
 } from "@mui/material";
 import { AutoSizer } from "react-virtualized";
 import { FixedSizeList as List } from "react-window";
-
 import { useSelector, useDispatch } from "react-redux";
 import CityListCard from "./cityList/CityListCard";
 import { forwardRef } from "react";
@@ -32,8 +31,9 @@ const innerElementType = forwardRef(({ style, ...rest }, ref) => {
   );
 });
 
-export default function CityList() {
-  const visibleData = useSelector((state) => state.cityWishList.visibleData);
+export default function CityList({ visibleData }) {
+  const dispatch = useDispatch();
+
   const rowRenderer = ({
     index, // Index of row
     isScrolling, // The List is currently being scrolled
@@ -48,9 +48,11 @@ export default function CityList() {
         height: `${parseFloat(style.height) + 50}px`,
       }}
     >
-      <CityListCard data={visibleData[index]} />
+      <CityListCard cityItem={visibleData[index]} />
     </Box>
   );
+
+
 
   return (
     <AutoSizer style={{ width: "1200px", height: "95vh" }}>

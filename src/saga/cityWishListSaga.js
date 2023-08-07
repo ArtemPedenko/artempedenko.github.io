@@ -1,27 +1,26 @@
 import { takeEvery, call, put, select } from "redux-saga/effects";
 import getCitiesDataApi from "./api";
-import { usePapaParse } from "react-papaparse";
 import {
-  getCityDataRequest,
-  getCityDataSuccess,
-  setUnparsedData,
+    getCityDataRequest,
+    getCityDataSuccess,
 } from "../store/slice";
-import { dataParse } from "../utils";
+import Papa from "papaparse"
+
 
 function* getCitiesDataWorker() {
-  const { readString } = usePapaParse();
 
-  try {
-    const state = yield select();
-    const { data } = yield call(getCitiesDataApi);
-    if (data) {
-      yield put(setUnparsedData(data));
+    try {
+        const state = yield select();
+        const { data } = yield call(getCitiesDataApi);
+        if (data) {
+            const parsedData = Papa.parse(data, { header: true }).data
+            yield put(getCityDataSuccess(parsedData));
+        }
+    } catch (error) {
+        console.log(error);
     }
-  } catch (error) {
-    console.log(error);
-  }
 }
 
 export function* citiesLoadingWatcher() {
-  yield takeEvery(getCityDataRequest, getCitiesDataWorker);
+    yield takeEvery(getCityDataRequest, getCitiesDataWorker);
 }

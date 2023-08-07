@@ -7,7 +7,7 @@ import {
   Divider,
 } from "@mui/material";
 import { useEffect } from "react";
-import { setVisibleData, setCurrentList } from "../store/slice";
+import { setVisibleData, setCurrentStatus } from "../store/slice";
 import { useSelector, useDispatch } from "react-redux";
 
 const StyledButton = styled(ToggleButton)(({ theme }) => ({
@@ -18,23 +18,23 @@ const StyledButton = styled(ToggleButton)(({ theme }) => ({
 export default function ButtonBar() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.cityWishList.data);
-  const currentList = useSelector((state) => state.cityWishList.currentList);
+  const currentStatus = useSelector((state) => state.cityWishList.currentStatus);
   const selectedData = useSelector((state) => state.cityWishList.selectedData);
 
   const handleChange = (event, newAlignment) => {
-    dispatch(setCurrentList(newAlignment));
+    dispatch(setCurrentStatus(newAlignment));
   };
 
   useEffect(() => {
-    if (currentList === "all") dispatch(setVisibleData(data));
-    if (currentList === "selected") dispatch(setVisibleData(selectedData));
-  }, [currentList]);
+    if (currentStatus === "all") dispatch(setVisibleData(data));
+    if (currentStatus === "selected") dispatch(setVisibleData(selectedData));
+  }, [currentStatus]);
 
   return (
     <Stack direction="row" gap={2} mt="5px">
       <ToggleButtonGroup
         exclusive
-        value={currentList}
+        value={currentStatus}
         onChange={handleChange}
         sx={{
           ".MuiToggleButton-root.Mui-selected": {

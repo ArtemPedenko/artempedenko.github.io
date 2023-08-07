@@ -29,12 +29,12 @@ export default function SearchBar() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.cityWishList.data);
   const selectedData = useSelector((state) => state.cityWishList.selectedData);
-  const currentList = useSelector((state) => state.cityWishList.currentList);
+  const currentStatus = useSelector((state) => state.cityWishList.currentStatus);
   function searchFunc(filter) {
     dispatch(setSearchingText(filter))
-    if (currentList === "all") {
+    if (currentStatus === "all") {
       dispatch(setVisibleData(search(data, filter)));
-    } else if (currentList === "selected") {
+    } else if (currentStatus === "selected") {
       dispatch(setVisibleData(search(selectedData, filter)));
     }
   }

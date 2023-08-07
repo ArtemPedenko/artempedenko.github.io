@@ -10,29 +10,25 @@ import {
   Button,
   Container,
 } from "@mui/material";
-import { addToSelected, removeFromSelected } from "../../utils";
-import { setSelectedData, setVisibleData } from "../../store/slice";
+import { addToSelected } from "../../utils";
+import { setSelectedData, setVisibleData, addToSelectedData, removeFromSelectedData } from "../../store/slice";
 import { HighlightText, Lighter } from "../../utils";
 
 
 
 export default function CityListCard(props) {
-  const { data } = props;
+  const { cityItem } = props;
   const dispatch = useDispatch();
   const selectedData = useSelector((state) => state.cityWishList.selectedData);
   const searchingText = useSelector(
     (state) => state.cityWishList.searchingText
   );
-  const currentList = useSelector((state) => state.cityWishList.currentList);
+  const currentStatus = useSelector((state) => state.cityWishList.currentStatus);
 
   const [open, setOpen] = useState(false);
   const modalOpen = () => setOpen(true);
   const modalClose = () => setOpen(false);
 
-  function deleteElement() {
-    dispatch(setSelectedData(removeFromSelected(selectedData, data)));
-    dispatch(setVisibleData(selectedData));
-  }
 
   return (
     <>
@@ -51,10 +47,10 @@ export default function CityListCard(props) {
       >
         <Stack spacing={2}>
           <Typography>
-            <Lighter str={data.city} filter={searchingText} />
+            <Lighter str={cityItem.city} filter={searchingText} />
           </Typography>
           <Typography>
-            <Lighter str={data.country} filter={searchingText} />
+            <Lighter str={cityItem.country} filter={searchingText} />
           </Typography>
         </Stack>
         <Box>
@@ -67,13 +63,13 @@ export default function CityListCard(props) {
             >
               See on map
             </Button>
-            {currentList === "all" ? (
+            {currentStatus === "all" ? (
               <Button
                 variant="outlined"
                 color="secondary"
                 size="small"
                 onClick={() =>
-                  dispatch(setSelectedData(addToSelected(selectedData, data)))
+                  dispatch(addToSelectedData(cityItem))
                 }
               >
                 I want to visit
@@ -83,15 +79,15 @@ export default function CityListCard(props) {
                 variant="outlined"
                 color="secondary"
                 size="small"
-                onClick={() => deleteElement()}
+                onClick={() => dispatch(removeFromSelectedData(cityItem))}
               >
                 delete
               </Button>
             )}
           </Stack>
         </Box>
-      </Container>
-      <MapModal open={open} close={modalClose} lat={data.lat} lng={data.lng} />
+      </Container >
+      <MapModal open={open} close={modalClose} lat={cityItem.lat} lng={cityItem.lng} />
     </>
   );
 }

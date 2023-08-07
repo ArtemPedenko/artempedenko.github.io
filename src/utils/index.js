@@ -13,7 +13,6 @@ const addToSelected = (selectedData, dataElement) => {
 };
 
 const removeFromSelected = (selectedData, dataElement) => {
-  console.log("delete");
   console.log(dataElement.city);
   const changedSelectedData = [...selectedData];
   selectedData.map((item, index) => {
@@ -21,7 +20,6 @@ const removeFromSelected = (selectedData, dataElement) => {
       changedSelectedData.splice(index, 1);
     }
   });
-  console.log(changedSelectedData);
   return changedSelectedData;
 };
 
@@ -65,24 +63,6 @@ const search = (data, filter) => {
   });
 };
 
-import Papa from "papaparse";
 
-const dataParse = (data) => {
-  const { readString } = usePapaParse();
-  var csvData = [];
-  readString(data, {
-    header: true,
-    worker: true,
-    //step: function (result) {
-    //  csvData.push(result.data);
-    //},
-    complete: function (results) {
-      csvData.push(results.data);
-      console.log("done");
-    },
-  });
-  return csvData;
-  //return qqq;
-};
 
-export { addToSelected, search, Lighter, dataParse, removeFromSelected };
+export { addToSelected, search, Lighter, removeFromSelected };

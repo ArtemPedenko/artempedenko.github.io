@@ -1,5 +1,5 @@
 import { Box, InputBase, styled, Button, ToggleButton } from "@mui/material";
-import { setVisibleData, setCurrentList } from "../../store/slice";
+import { setVisibleData, setCurrentStatus } from "../../store/slice";
 import { useSelector, useDispatch } from "react-redux";
 
 export default function ButtonSelected() {
@@ -10,7 +10,7 @@ export default function ButtonSelected() {
       variant="contained"
       onClick={() => {
         dispatch(setVisibleData(selectedData));
-        dispatch(setCurrentList("selected"));
+        dispatch(setCurrentStatus("selected"));
       }}
     >
       Selected
