@@ -12,6 +12,19 @@ const addToSelected = (selectedData, dataElement) => {
   return changedSelectedData;
 };
 
+const removeFromSelected = (selectedData, dataElement) => {
+  console.log("delete");
+  console.log(dataElement.city);
+  const changedSelectedData = [...selectedData];
+  selectedData.map((item, index) => {
+    if (item.city === dataElement.city) {
+      changedSelectedData.splice(index, 1);
+    }
+  });
+  console.log(changedSelectedData);
+  return changedSelectedData;
+};
+
 function Lighter({ filter, str }) {
   if (!filter) return str;
   const regExp = new RegExp(filter, "ig");
@@ -72,4 +85,4 @@ const dataParse = (data) => {
   //return qqq;
 };
 
-export { addToSelected, search, Lighter, dataParse };
+export { addToSelected, search, Lighter, dataParse, removeFromSelected };

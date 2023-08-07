@@ -10,8 +10,8 @@ import {
   Button,
   Container,
 } from "@mui/material";
-import { addToSelected } from "../../utils";
-import { setSelectedData } from "../../store/slice";
+import { addToSelected, removeFromSelected } from "../../utils";
+import { setSelectedData, setVisibleData } from "../../store/slice";
 import { HighlightText, Lighter } from "../../utils";
 
 export default function CityListCard(props) {
@@ -26,6 +26,11 @@ export default function CityListCard(props) {
   const [open, setOpen] = useState(false);
   const modalOpen = () => setOpen(true);
   const modalClose = () => setOpen(false);
+
+  function deleteElement() {
+    dispatch(setSelectedData(removeFromSelected(selectedData, data)));
+    dispatch(setVisibleData(selectedData));
+  }
 
   return (
     <>
@@ -72,7 +77,12 @@ export default function CityListCard(props) {
                 I want to visit
               </Button>
             ) : (
-              <Button variant="outlined" color="secondary" size="small">
+              <Button
+                variant="outlined"
+                color="secondary"
+                size="small"
+                onClick={() => deleteElement()}
+              >
                 delete
               </Button>
             )}

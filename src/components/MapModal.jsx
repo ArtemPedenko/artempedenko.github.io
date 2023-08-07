@@ -17,9 +17,7 @@ export default function MapModal(props) {
   const { open, close, lat, lng } = props;
   return (
     <Modal keepMounted open={open} onClose={close}>
-      <Box sx={style}>
-        <YandexMap lat={lat} lng={lng} />
-      </Box>
+      <Box sx={style}>{/* <YandexMap lat={lat} lng={lng} /> */}</Box>
     </Modal>
   );
 }

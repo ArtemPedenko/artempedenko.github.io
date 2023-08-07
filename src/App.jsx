@@ -20,6 +20,8 @@ export default function App() {
     (state) => state.cityWishList.searchingText
   );
   const unparsedData = useSelector((state) => state.cityWishList.unparsedData);
+  const currentList = useSelector((state) => state.cityWishList.currentList);
+  const selectedData = useSelector((state) => state.cityWishList.selectedData);
 
   useEffect(() => {
     //dispatch(getCityDataRequest());
@@ -44,7 +46,9 @@ export default function App() {
       });
   }, []);
 
-  useEffect(() => {}, [searchingText]);
+  useEffect(() => {
+    console.log("useEffect2");
+  }, [searchingText, selectedData]);
 
   return (
     <>
