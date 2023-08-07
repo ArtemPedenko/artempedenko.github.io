@@ -7,6 +7,7 @@ const initialState = {
   searchingText: "",
   currentList: "all",
   loading: false,
+  unparsedData: []
 };
 
 const slice = createSlice({
@@ -45,6 +46,9 @@ const slice = createSlice({
     getCityDataFailure: (state, action) => {
       state.loading = false;
     },
+    setUnparsedData: (state, action) => {
+      state.unparsedData = action.payload;
+    },
 
   },
 });
@@ -57,7 +61,8 @@ export const {
   setCurrentList,
   getCityDataRequest,
   getCityDataSuccess,
-  getCityDataFailure
+  getCityDataFailure,
+  setUnparsedData
 } = slice.actions;
 
 export default slice.reducer;
