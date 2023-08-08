@@ -23,7 +23,6 @@
     "react-streetview": "^1.1.1",
     "react-virtualized": "^9.22.5",
     "react-window": "^1.8.9",
-    "react-yandex-maps": "^4.6.0",
     "redux-saga": "^1.2.3"
   },
   "devDependencies": {

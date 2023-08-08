@@ -1,5 +1,4 @@
 import { Modal, Box } from "@mui/material";
-import YandexMap from "./YandexMap";
 import GoogleMap from "./GoogleMap";
 
 const style = {
