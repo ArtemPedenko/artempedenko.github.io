@@ -18,7 +18,7 @@ export default function App() {
   useEffect(() => {
     dispatch(getCityDataRequest());
   }, []);
-  
+
   return (
     <>
       <Box sx={{ overflow: "auto" }}>
@@ -33,8 +33,6 @@ export default function App() {
           <CityList visibleData={selectedData} />
         )}
       </Box>
-
-      
     </>
   );
 }

@@ -19,6 +19,10 @@ export default function GoogleMap(props) {
     rotateControl: true,
     fullscreenControl: true,
   };
+
+  const streetViewPanoramaOptions = {
+    position: { lat: +latitude, lng: +longitude },
+  };
   return (
     <div style={{ height: "800px", width: "800px" }}>
       <GoogleMapReact
@@ -27,9 +31,11 @@ export default function GoogleMap(props) {
         defaultZoom={gMap.zoom}
         yesIWantToUseGoogleMapApiInternals
         options={options}
-      >
-        {/*  <ReactStreetview position={gMap.center} visible={true} /> */}
-      </GoogleMapReact>
+      ></GoogleMapReact>
+      {/* <ReactStreetview
+        apiKey={{ key: "AIzaSyAohUTSKKv43mwxK4YhRIMntIkMfQLbj5Q" }}
+        streetViewPanoramaOptions={streetViewPanoramaOptions}
+      /> */}
     </div>
   );
 }
