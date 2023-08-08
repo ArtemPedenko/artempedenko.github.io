@@ -1,3 +1,5 @@
+// api key second variant "AIzaSyB0pAAfd-SgsJm0w0hvzZfg90qfXoPN9bw"
+
 import GoogleMapReact from "google-map-react";
 import ReactStreetview from "react-streetview";
 
@@ -32,10 +34,6 @@ export default function GoogleMap(props) {
         yesIWantToUseGoogleMapApiInternals
         options={options}
       ></GoogleMapReact>
-      {/* <ReactStreetview
-        apiKey={{ key: "AIzaSyAohUTSKKv43mwxK4YhRIMntIkMfQLbj5Q" }}
-        streetViewPanoramaOptions={streetViewPanoramaOptions}
-      /> */}
     </div>
   );
 }

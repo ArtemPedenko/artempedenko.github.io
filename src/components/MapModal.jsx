@@ -13,15 +13,6 @@ const style = {
   boxShadow: 24,
 };
 
-//<>
-//      {open && (
-//        <Box sx={{ style }}>
-//          {/*  <YandexMap lat={lat} lng={lng} /> */}
-//          <GoogleMap lat={lat} lng={lng} />
-//        </Box>
-//      )}
-//    </>
-
 export default function MapModal(props) {
   const { open, close, lat, lng } = props;
   return (
