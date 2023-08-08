@@ -32,8 +32,10 @@ export default function RandomStreet() {
   return (
     <Modal open={randomStreetModal} onClose={modalClose}>
       <Box sx={style}>
+
+
         <ReactStreetview
-          apiKey={{ key: "AIzaSyAohUTSKKv43mwxK4YhRIMntIkMfQLbj5Q" }}
+          apiKey={"AIzaSyAohUTSKKv43mwxK4YhRIMntIkMfQLbj5Q"}
           streetViewPanoramaOptions={streetViewPanoramaOptions}
         />
       </Box>
