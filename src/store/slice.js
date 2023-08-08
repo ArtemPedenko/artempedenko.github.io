@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import reject from 'lodash/reject';
+import reject from "lodash/reject";
 
 const initialState = {
   data: [],
@@ -8,7 +8,8 @@ const initialState = {
   searchingText: "",
   currentStatus: "all",
   loading: false,
-  unparsedData: []
+  randomStreetModal: false,
+  randomCity: {},
 };
 
 const slice = createSlice({
@@ -53,10 +54,13 @@ const slice = createSlice({
     getCityDataFailure: (state, action) => {
       state.loading = false;
     },
-    setUnparsedData: (state, action) => {
-      state.unparsedData = action.payload;
+    setRandomStreetModal: (state, action) => {
+      state.randomStreetModal = action.payload;
     },
-
+    setRandomCity: (state, action) => {
+      state.randomStreetModal = true;
+      state.randomCity = action.payload;
+    },
   },
 });
 
@@ -69,9 +73,10 @@ export const {
   getCityDataRequest,
   getCityDataSuccess,
   getCityDataFailure,
-  setUnparsedData,
+  setRandomStreetModal,
   addToSelectedData,
-  removeFromSelectedData
+  removeFromSelectedData,
+  setRandomCity,
 } = slice.actions;
 
 export default slice.reducer;

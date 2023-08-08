@@ -7,8 +7,13 @@ import {
   Divider,
 } from "@mui/material";
 import { useEffect } from "react";
-import { setVisibleData, setCurrentStatus } from "../store/slice";
+import {
+  setVisibleData,
+  setCurrentStatus,
+  setRandomCity,
+} from "../store/slice";
 import { useSelector, useDispatch } from "react-redux";
+import RandomStreet from "../components/RandomStreet";
 
 const StyledButton = styled(ToggleButton)(({ theme }) => ({
   backgroundColor: "#76168a",
@@ -18,7 +23,9 @@ const StyledButton = styled(ToggleButton)(({ theme }) => ({
 export default function ButtonBar() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.cityWishList.data);
-  const currentStatus = useSelector((state) => state.cityWishList.currentStatus);
+  const currentStatus = useSelector(
+    (state) => state.cityWishList.currentStatus
+  );
   const selectedData = useSelector((state) => state.cityWishList.selectedData);
 
   const handleChange = (event, newAlignment) => {
@@ -50,9 +57,13 @@ export default function ButtonBar() {
         variant="outlined"
         color="secondary"
         sx={{ backgroundColor: "primary.main", borderColor: "primary.main" }}
+        onClick={() =>
+          dispatch(setRandomCity(data[Math.floor(Math.random() * data.length)]))
+        }
       >
         random
       </Button>
+      <RandomStreet />
     </Stack>
   );
 }

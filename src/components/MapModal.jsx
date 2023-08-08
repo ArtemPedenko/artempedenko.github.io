@@ -26,12 +26,7 @@ const style = {
 export default function MapModal(props) {
   const { open, close, lat, lng } = props;
   return (
-    <Modal
-      open={open}
-      onClose={close}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
-    >
+    <Modal open={open} onClose={close}>
       <Box sx={style}>
         <GoogleMap latitude={lat} longitude={lng} />
       </Box>
