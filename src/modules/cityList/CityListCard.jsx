@@ -11,10 +11,13 @@ import {
   Container,
 } from "@mui/material";
 import { addToSelected } from "../../utils";
-import { setSelectedData, setVisibleData, addToSelectedData, removeFromSelectedData } from "../../store/slice";
+import {
+  setSelectedData,
+  setVisibleData,
+  addToSelectedData,
+  removeFromSelectedData,
+} from "../../store/slice";
 import { HighlightText, Lighter } from "../../utils";
-
-
 
 export default function CityListCard(props) {
   const { cityItem } = props;
@@ -23,12 +26,13 @@ export default function CityListCard(props) {
   const searchingText = useSelector(
     (state) => state.cityWishList.searchingText
   );
-  const currentStatus = useSelector((state) => state.cityWishList.currentStatus);
+  const currentStatus = useSelector(
+    (state) => state.cityWishList.currentStatus
+  );
 
   const [open, setOpen] = useState(false);
   const modalOpen = () => setOpen(true);
   const modalClose = () => setOpen(false);
-
 
   return (
     <>
@@ -68,9 +72,7 @@ export default function CityListCard(props) {
                 variant="outlined"
                 color="secondary"
                 size="small"
-                onClick={() =>
-                  dispatch(addToSelectedData(cityItem))
-                }
+                onClick={() => dispatch(addToSelectedData(cityItem))}
               >
                 I want to visit
               </Button>
@@ -86,8 +88,13 @@ export default function CityListCard(props) {
             )}
           </Stack>
         </Box>
-      </Container >
-      <MapModal open={open} close={modalClose} lat={cityItem.lat} lng={cityItem.lng} />
+      </Container>
+      <MapModal
+        open={open}
+        close={modalClose}
+        lat={cityItem.lat}
+        lng={cityItem.lng}
+      />
     </>
   );
 }
