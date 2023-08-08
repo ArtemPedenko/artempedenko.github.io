@@ -7,7 +7,7 @@ import {
   setData,
   getCityDataRequest,
   getCityDataSuccess,
-  setCurrentStatus
+  setCurrentStatus,
 } from "./store/slice";
 import CityList from "./modules/CityList";
 import { Box } from "@mui/material";
@@ -21,15 +21,14 @@ export default function App() {
   );
   const data = useSelector((state) => state.cityWishList.data);
   const unparsedData = useSelector((state) => state.cityWishList.unparsedData);
-  const currentStatus = useSelector((state) => state.cityWishList.currentStatus);
+  const currentStatus = useSelector(
+    (state) => state.cityWishList.currentStatus
+  );
   const selectedData = useSelector((state) => state.cityWishList.selectedData);
-
 
   useEffect(() => {
     dispatch(getCityDataRequest());
   }, []);
-
-
 
   //useEffect(() => {
   //}, [searchingText]);
@@ -37,8 +36,16 @@ export default function App() {
   return (
     <>
       <Box sx={{ overflow: "auto" }}>
-        {currentStatus === "all" && <CityList visibleData={data} />}
-        {currentStatus === "selected" && <CityList visibleData={selectedData} />}
+        {/* {currentStatus === "all" && <CityList visibleData={data} />}
+        {currentStatus === "selected" && (
+          <CityList visibleData={selectedData} />
+        )} */}
+
+        {currentStatus === "all" ? (
+          <CityList visibleData={data} />
+        ) : (
+          <CityList visibleData={selectedData} />
+        )}
       </Box>
     </>
   );
