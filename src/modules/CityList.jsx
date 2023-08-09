@@ -14,26 +14,17 @@ import { forwardRef } from "react";
 import SearchBar from "./SearchBar";
 import ButtonBar from "./ButtonBar";
 
-const innerElementType = forwardRef(({ style, ...rest }, ref) => {
+const innerElementType = forwardRef(({ ...rest }, ref) => {
   return (
     <Container>
       <SearchBar />
       <ButtonBar />
-      <div
-        ref={ref}
-        style={{
-          ...style,
-          height: `${parseFloat(style.height) + 50 * 2}px`,
-        }}
-        {...rest}
-      />
+      <Box ref={ref} {...rest} />
     </Container>
   );
 });
 
 export default function CityList({ visibleData }) {
-  const dispatch = useDispatch();
-
   const rowRenderer = ({
     index, // Index of row
     isScrolling, // The List is currently being scrolled
@@ -44,18 +35,15 @@ export default function CityList({ visibleData }) {
     <Box
       style={{
         ...style,
-        top: `${parseFloat(style.top) + 87}px`,
-        height: `${parseFloat(style.height) + 50}px`,
+        top: `${parseFloat(style.top) + 88}px`,
       }}
     >
       <CityListCard cityItem={visibleData[index]} />
     </Box>
   );
 
-
-
   return (
-    <AutoSizer style={{ width: "1200px", height: "95vh" }}>
+    <AutoSizer style={{ width: "90vw", height: "96vh" }}>
       {({ height, width }) => (
         <List
           width={width}

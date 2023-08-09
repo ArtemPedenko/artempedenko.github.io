@@ -45,7 +45,6 @@ export default function CityListCard(props) {
           mt: "10px",
           borderRadius: "5px",
           alignItems: "center",
-          width: "1150px",
           justifyContent: "space-between",
         }}
       >
