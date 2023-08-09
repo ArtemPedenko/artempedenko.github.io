@@ -10,9 +10,10 @@ export default function ButtonRandom() {
     <Tooltip
       title={
         <>
-          <Typography color="inherit">Tooltip with HTML</Typography>
-          <em>{"And here's"}</em> <b>{"some"}</b> <u>{"amazing content"}</u>.{" "}
-          {"It's very engaging. Right?"}
+          <Typography color="inherit">
+            You can click this button to see random city's streetview
+          </Typography>
+          <u>{"Notice!"}</u>. {"Not all cities are on Google streetview"}
         </>
       }
     >
