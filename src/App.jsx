@@ -1,6 +1,5 @@
 import "./styles.css";
 import { useEffect } from "react";
-import { usePapaParse } from "react-papaparse";
 import { useDispatch, useSelector } from "react-redux";
 import { getCityDataRequest } from "./store/slice";
 import CityList from "./modules/CityList";

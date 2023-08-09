@@ -1,5 +1,3 @@
-import { usePapaParse } from "react-papaparse";
-
 const addToSelected = (selectedData, dataElement) => {
   const changedSelectedData = [...selectedData];
   let count = 0;
@@ -63,6 +61,4 @@ const search = (data, filter) => {
   });
 };
 
-
-
-export { addToSelected, search, Lighter, removeFromSelected };
+export { search, Lighter };

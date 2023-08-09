@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import reject from "lodash/reject";
+import { reject, union } from "lodash";
 
 const initialState = {
   data: [],
@@ -26,6 +26,7 @@ const slice = createSlice({
       state.selectedData = action.payload;
     },
     addToSelectedData: (state, action) => {
+      state.selectedData = reject(state.selectedData, action.payload);
       state.selectedData.push(action.payload);
     },
     removeFromSelectedData: (state, action) => {

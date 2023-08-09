@@ -22,7 +22,6 @@ export default function RandomStreet() {
   const randomCity = useSelector((state) => state.cityWishList.randomCity);
   const latitude = +randomCity.lat;
   const longitude = +randomCity.lng;
-  console.log(typeof latitude);
 
   const dispatch = useDispatch();
   const modalClose = () => dispatch(setRandomStreetModal(false));

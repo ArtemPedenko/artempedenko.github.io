@@ -44,7 +44,6 @@ export default function ButtonBar() {
       sx={{
         display: "flex",
         justifyContent: "center",
-        // width: "80vw",
       }}
     >
       <Stack direction="row" gap={2} mt="5px" sx={{ width: "80vw" }}>
