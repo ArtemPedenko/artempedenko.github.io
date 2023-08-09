@@ -10,19 +10,12 @@ import {
   Button,
   Container,
 } from "@mui/material";
-import { addToSelected } from "../../utils";
-import {
-  setSelectedData,
-  setVisibleData,
-  addToSelectedData,
-  removeFromSelectedData,
-} from "../../store/slice";
-import { HighlightText, Lighter } from "../../utils";
+import { addToSelectedData, removeFromSelectedData } from "../../store/slice";
+import { Lighter } from "../../utils";
 
 export default function CityListCard(props) {
   const { cityItem } = props;
   const dispatch = useDispatch();
-  const selectedData = useSelector((state) => state.cityWishList.selectedData);
   const searchingText = useSelector(
     (state) => state.cityWishList.searchingText
   );
@@ -36,58 +29,61 @@ export default function CityListCard(props) {
 
   return (
     <>
-      <Container
-        sx={{
-          display: "flex",
-          backgroundColor: "primary.main",
-          color: "secondary.main",
-          padding: "10px",
-          mt: "10px",
-          borderRadius: "5px",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <Stack spacing={2}>
-          <Typography>
-            <Lighter str={cityItem.city} filter={searchingText} />
-          </Typography>
-          <Typography>
-            <Lighter str={cityItem.country} filter={searchingText} />
-          </Typography>
-        </Stack>
-        <Box>
-          <Stack spacing={1}>
-            <Button
-              variant="outlined"
-              color="secondary"
-              size="small"
-              onClick={modalOpen}
-            >
-              See on map
-            </Button>
-            {currentStatus === "all" ? (
-              <Button
-                variant="outlined"
-                color="secondary"
-                size="small"
-                onClick={() => dispatch(addToSelectedData(cityItem))}
-              >
-                I want to visit
-              </Button>
-            ) : (
-              <Button
-                variant="outlined"
-                color="secondary"
-                size="small"
-                onClick={() => dispatch(removeFromSelectedData(cityItem))}
-              >
-                delete
-              </Button>
-            )}
+      <Box sx={{ display: "flex", justifyContent: "center" }}>
+        <Box
+          sx={{
+            display: "flex",
+            backgroundColor: "primary.main",
+            color: "secondary.main",
+            padding: "10px",
+            mt: "10px",
+            borderRadius: "5px",
+            alignItems: "center",
+            justifyContent: "space-between",
+            width: "80vw",
+          }}
+        >
+          <Stack spacing={2}>
+            <Typography>
+              <Lighter str={cityItem.city} filter={searchingText} />
+            </Typography>
+            <Typography>
+              <Lighter str={cityItem.country} filter={searchingText} />
+            </Typography>
           </Stack>
+          <Box>
+            <Stack spacing={1}>
+              <Button
+                variant="outlined"
+                color="secondary"
+                size="small"
+                onClick={modalOpen}
+              >
+                See on map
+              </Button>
+              {currentStatus === "all" ? (
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  size="small"
+                  onClick={() => dispatch(addToSelectedData(cityItem))}
+                >
+                  I want to visit
+                </Button>
+              ) : (
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  size="small"
+                  onClick={() => dispatch(removeFromSelectedData(cityItem))}
+                >
+                  delete
+                </Button>
+              )}
+            </Stack>
+          </Box>
         </Box>
-      </Container>
+      </Box>
       <MapModal
         open={open}
         close={modalClose}

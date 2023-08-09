@@ -5,7 +5,8 @@ import {
   Stack,
   Button,
   Tooltip,
-  Typography
+  Typography,
+  Box,
 } from "@mui/material";
 import { useEffect } from "react";
 import {
@@ -39,40 +40,55 @@ export default function ButtonBar() {
   }, [currentStatus]);
 
   return (
-    <Stack direction="row" gap={2} mt="5px">
-      <ToggleButtonGroup
-        exclusive
-        value={currentStatus}
-        onChange={handleChange}
-        sx={{
-          ".MuiToggleButton-root.Mui-selected": {
-            backgroundColor: "#ba33d6",
-            color: "white",
-          },
-        }}
-      >
-        <StyledButton value="all">all</StyledButton>
-        <StyledButton value="selected">selected</StyledButton>
-      </ToggleButtonGroup>
-      <Tooltip title={
-        <>
-          <Typography color="inherit">Tooltip with HTML</Typography>
-          <em>{"And here's"}</em> <b>{'some'}</b> <u>{'amazing content'}</u>.{' '}
-          {"It's very engaging. Right?"}
-        </>
-      }>
-        <Button
-          variant="outlined"
-          color="secondary"
-          sx={{ backgroundColor: "primary.main", borderColor: "primary.main" }}
-          onClick={() =>
-            dispatch(setRandomCity(data[Math.floor(Math.random() * data.length)]))
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        // width: "80vw",
+      }}
+    >
+      <Stack direction="row" gap={2} mt="5px" sx={{ width: "80vw" }}>
+        <ToggleButtonGroup
+          exclusive
+          value={currentStatus}
+          onChange={handleChange}
+          sx={{
+            ".MuiToggleButton-root.Mui-selected": {
+              backgroundColor: "#ba33d6",
+              color: "white",
+            },
+          }}
+        >
+          <StyledButton value="all">all</StyledButton>
+          <StyledButton value="selected">selected</StyledButton>
+        </ToggleButtonGroup>
+        <Tooltip
+          title={
+            <>
+              <Typography color="inherit">Tooltip with HTML</Typography>
+              <em>{"And here's"}</em> <b>{"some"}</b> <u>{"amazing content"}</u>
+              . {"It's very engaging. Right?"}
+            </>
           }
         >
-          random
-        </Button>
-      </Tooltip>
-      <RandomStreet />
-    </Stack>
+          <Button
+            variant="outlined"
+            color="secondary"
+            sx={{
+              backgroundColor: "primary.main",
+              borderColor: "primary.main",
+            }}
+            onClick={() =>
+              dispatch(
+                setRandomCity(data[Math.floor(Math.random() * data.length)])
+              )
+            }
+          >
+            random
+          </Button>
+        </Tooltip>
+        <RandomStreet />
+      </Stack>
+    </Box>
   );
 }
