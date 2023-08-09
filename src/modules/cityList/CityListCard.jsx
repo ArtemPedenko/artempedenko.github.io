@@ -3,7 +3,7 @@ import { useState } from "react";
 import MapModal from "../../components/MapModal";
 import { Box, Stack, Typography, Button } from "@mui/material";
 import { addToSelectedData, removeFromSelectedData } from "../../store/slice";
-import { Lighter, addToSelected } from "../../utils";
+import { Lighter } from "../../utils";
 
 export default function CityListCard(props) {
   const { cityItem } = props;
