@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCityDataRequest } from "./store/slice";
 import CityList from "./modules/CityList";
 import { Box } from "@mui/material";
+import ButtonBar from "./modules/ButtonBar";
+import SearchBar from "./modules/SearchBar";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -21,12 +23,13 @@ export default function App() {
 
   return (
     <>
-      <Box sx={{ overflow: "auto" }}>
-        {/* {currentStatus === "all" && <CityList visibleData={data} />}
-        {currentStatus === "selected" && (
-          <CityList visibleData={selectedData} />
-        )} */}
-
+      <Box sx={{ overflow: "hidden" }}>
+        <Box sx={{ position: "relative" }}>
+          <SearchBar />
+          <Box sx={{ position: "relative" }}>
+            <ButtonBar />
+          </Box>
+        </Box>
         {currentStatus === "all" ? (
           <CityList visibleData={data} />
         ) : (

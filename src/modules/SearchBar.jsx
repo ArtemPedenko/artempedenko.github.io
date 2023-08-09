@@ -6,7 +6,7 @@ import { setVisibleData, setSearchingText } from "../store/slice";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
-  width: "100%",
+  width: "80vw",
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -29,9 +29,11 @@ export default function SearchBar() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.cityWishList.data);
   const selectedData = useSelector((state) => state.cityWishList.selectedData);
-  const currentStatus = useSelector((state) => state.cityWishList.currentStatus);
+  const currentStatus = useSelector(
+    (state) => state.cityWishList.currentStatus
+  );
   function searchFunc(filter) {
-    dispatch(setSearchingText(filter))
+    dispatch(setSearchingText(filter));
     if (currentStatus === "all") {
       dispatch(setVisibleData(search(data, filter)));
     } else if (currentStatus === "selected") {
@@ -39,12 +41,12 @@ export default function SearchBar() {
     }
   }
 
-
   return (
     <Box
       sx={{
         display: "flex",
         justifyContent: "center",
+        // width: "80vw",
       }}
     >
       <Search>
