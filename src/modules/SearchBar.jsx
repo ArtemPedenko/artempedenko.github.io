@@ -46,7 +46,6 @@ export default function SearchBar() {
       sx={{
         display: "flex",
         justifyContent: "center",
-        // width: "80vw",
       }}
     >
       <Search>

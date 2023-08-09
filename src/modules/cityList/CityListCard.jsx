@@ -1,17 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import MapModal from "../../components/MapModal";
-import {
-  Box,
-  InputBase,
-  styled,
-  Stack,
-  Typography,
-  Button,
-  Container,
-} from "@mui/material";
+import { Box, Stack, Typography, Button } from "@mui/material";
 import { addToSelectedData, removeFromSelectedData } from "../../store/slice";
-import { Lighter } from "../../utils";
+import { Lighter, addToSelected } from "../../utils";
 
 export default function CityListCard(props) {
   const { cityItem } = props;

@@ -26,7 +26,7 @@ export default function GoogleMap(props) {
     position: { lat: +latitude, lng: +longitude },
   };
   return (
-    <div style={{ height: "800px", width: "800px" }}>
+    <div style={{ height: "80vh", width: "80vw" }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyAohUTSKKv43mwxK4YhRIMntIkMfQLbj5Q" }}
         defaultCenter={gMap.center}
