@@ -1,7 +1,6 @@
 // api key second variant "AIzaSyB0pAAfd-SgsJm0w0hvzZfg90qfXoPN9bw"
 
 import GoogleMapReact from "google-map-react";
-import ReactStreetview from "react-streetview";
 
 export default function GoogleMap(props) {
   const { latitude, longitude } = props;
@@ -22,9 +21,6 @@ export default function GoogleMap(props) {
     fullscreenControl: true,
   };
 
-  const streetViewPanoramaOptions = {
-    position: { lat: +latitude, lng: +longitude },
-  };
   return (
     <div style={{ height: "80vh", width: "80vw" }}>
       <GoogleMapReact
