@@ -31,6 +31,7 @@ const slice = createSlice({
     },
     removeFromSelectedData: (state, action) => {
       state.selectedData = reject(state.selectedData, action.payload);
+      state.visibleData = state.selectedData;
     },
     setVisibleData: (state, action) => {
       state.visibleData = action.payload;

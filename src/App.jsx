@@ -15,25 +15,36 @@ export default function App() {
     (state) => state.cityWishList.currentStatus
   );
   const selectedData = useSelector((state) => state.cityWishList.selectedData);
+  const searchingText = useSelector(
+    (state) => state.cityWishList.searchingText
+  );
+  const visibleData = useSelector((state) => state.cityWishList.visibleData);
 
   useEffect(() => {
     dispatch(getCityDataRequest());
   }, []);
+
+  const renderElement = () => {
+    if (searchingText !== "") {
+      return <CityList visibleData={visibleData} />;
+    } else if (currentStatus === "all") {
+      return <CityList visibleData={data} />;
+    } else if ((<CityList visibleData={selectedData} />)) {
+      return <CityList visibleData={selectedData} />;
+    }
+    return null;
+  };
 
   return (
     <>
       <Box sx={{ overflow: "hidden" }}>
         <Box sx={{ position: "relative" }}>
           <SearchBar />
-          <Box sx={{ position: "relative" }}>
-            <ButtonBar />
-          </Box>
         </Box>
-        {currentStatus === "all" ? (
-          <CityList visibleData={data} />
-        ) : (
-          <CityList visibleData={selectedData} />
-        )}
+        <Box sx={{ position: "relative" }}>
+          <ButtonBar />
+        </Box>
+        {renderElement()}
       </Box>
     </>
   );
