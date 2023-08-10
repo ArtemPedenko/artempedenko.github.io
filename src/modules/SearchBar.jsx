@@ -29,6 +29,9 @@ export default function SearchBar() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.cityWishList.data);
   const selectedData = useSelector((state) => state.cityWishList.selectedData);
+  const searchingText = useSelector(
+    (state) => state.cityWishList.searchingText
+  );
   const currentStatus = useSelector(
     (state) => state.cityWishList.currentStatus
   );
@@ -53,8 +56,9 @@ export default function SearchBar() {
           <SearchIcon color="secondary" sx={{ zIndex: 1 }} />
         </SearchIconWrapper>
         <StyledInputBase
+          value={searchingText}
           placeholder="Search…"
-          inputProps={{ "aria-label": "search" }}
+          //inputProps={{ "aria-label": "search" }}
           onChange={(e) => searchFunc(e.target.value)}
         />
       </Search>

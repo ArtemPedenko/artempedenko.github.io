@@ -44,6 +44,7 @@ const slice = createSlice({
     },
     setCurrentStatus: (state, action) => {
       state.currentStatus = action.payload;
+      state.searchingText = "";
     },
     getCityDataRequest: (state, action) => {
       state.loading = true;
