@@ -28,7 +28,9 @@ function Lighter({ filter, str }) {
   if (matchValue) {
     return str.split(regExp).map((symbol, index, array) => {
       if (index < array.length - 1) {
-        const c = matchValue.shift();
+        const lightingText = matchValue.shift();
+        console.log("symbol " + symbol);
+        console.log("lightingText " + lightingText);
         return (
           <span key={index}>
             {symbol}
@@ -38,7 +40,7 @@ function Lighter({ filter, str }) {
                 background: "#c31432",
               }}
             >
-              {c}
+              {lightingText}
             </span>
           </span>
         );
