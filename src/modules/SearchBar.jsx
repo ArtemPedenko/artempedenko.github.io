@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { search } from "../utils/index";
 import { setVisibleData, setSearchingText } from "../store/slice";
 
+let myInterval;
+
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   width: "80vw",
@@ -35,13 +37,26 @@ export default function SearchBar() {
   const currentStatus = useSelector(
     (state) => state.cityWishList.currentStatus
   );
-  function searchFunc(filter) {
-    dispatch(setSearchingText(filter));
-    if (currentStatus === "all") {
-      dispatch(setVisibleData(search(data, filter)));
-    } else if (currentStatus === "selected") {
-      dispatch(setVisibleData(search(selectedData, filter)));
+
+  function superSearch() {
+    function searchFunc(filter) {
+      clearInterval(myInterval);
+      if (currentStatus === "all") {
+        dispatch(setVisibleData(search(data, filter)));
+      } else if (currentStatus === "selected") {
+        dispatch(setVisibleData(search(selectedData, filter)));
+      }
     }
+    //
+    return searchFunc;
+  }
+
+  const superPuper = superSearch();
+
+  function interval(filter) {
+    clearInterval(myInterval);
+    dispatch(setSearchingText(filter));
+    myInterval = setInterval(superPuper, 1000, filter);
   }
 
   return (
@@ -59,7 +74,7 @@ export default function SearchBar() {
           value={searchingText}
           placeholder="Search…"
           //inputProps={{ "aria-label": "search" }}
-          onChange={(e) => searchFunc(e.target.value)}
+          onChange={(e) => interval(e.target.value)}
         />
       </Search>
     </Box>
