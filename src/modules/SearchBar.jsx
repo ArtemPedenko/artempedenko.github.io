@@ -40,6 +40,7 @@ export default function SearchBar() {
 
   function searchWrapper() {
     function searchFunc(filter) {
+      console.log(filter);
       clearInterval(myInterval);
       if (currentStatus === "all") {
         dispatch(setVisibleData(search(data, filter)));
