@@ -38,7 +38,7 @@ export default function SearchBar() {
     (state) => state.cityWishList.currentStatus
   );
 
-  function superSearch() {
+  function searchWrapper() {
     function searchFunc(filter) {
       clearInterval(myInterval);
       if (currentStatus === "all") {
@@ -47,16 +47,15 @@ export default function SearchBar() {
         dispatch(setVisibleData(search(selectedData, filter)));
       }
     }
-    //
     return searchFunc;
   }
 
-  const superPuper = superSearch();
+  const closureSearchingFunc = searchWrapper();
 
-  function interval(filter) {
+  function delaySearching(filter) {
     clearInterval(myInterval);
     dispatch(setSearchingText(filter));
-    myInterval = setInterval(superPuper, 1000, filter);
+    myInterval = setInterval(closureSearchingFunc, 1000, filter);
   }
 
   return (
@@ -74,7 +73,7 @@ export default function SearchBar() {
           value={searchingText}
           placeholder="Search…"
           //inputProps={{ "aria-label": "search" }}
-          onChange={(e) => interval(e.target.value)}
+          onChange={(e) => delaySearching(e.target.value)}
         />
       </Search>
     </Box>
