@@ -38,25 +38,20 @@ export default function SearchBar() {
     (state) => state.cityWishList.currentStatus
   );
 
-  function searchWrapper() {
-    function searchFunc(filter) {
-      console.log(filter);
-      clearInterval(myInterval);
-      if (currentStatus === "all") {
-        dispatch(setVisibleData(search(data, filter)));
-      } else if (currentStatus === "selected") {
-        dispatch(setVisibleData(search(selectedData, filter)));
-      }
+  function searchFunc(filter) {
+    console.log(filter);
+    clearInterval(myInterval);
+    if (currentStatus === "all") {
+      dispatch(setVisibleData(search(data, filter)));
+    } else if (currentStatus === "selected") {
+      dispatch(setVisibleData(search(selectedData, filter)));
     }
-    return searchFunc;
   }
-
-  const closureSearchingFunc = searchWrapper();
 
   function delaySearching(filter) {
     clearInterval(myInterval);
     dispatch(setSearchingText(filter));
-    myInterval = setInterval(closureSearchingFunc, 1000, filter);
+    myInterval = setInterval(searchFunc, 1000, filter);
   }
 
   return (
