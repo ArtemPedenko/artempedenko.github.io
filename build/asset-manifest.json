@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/cityWishList/static/css/main.069ff49e.css",
+    "main.js": "/cityWishList/static/js/main.9fdcd9e3.js",
+    "index.html": "/cityWishList/index.html",
+    "main.069ff49e.css.map": "/cityWishList/static/css/main.069ff49e.css.map",
+    "main.9fdcd9e3.js.map": "/cityWishList/static/js/main.9fdcd9e3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.069ff49e.css",
+    "static/js/main.9fdcd9e3.js"
+  ]
+}
