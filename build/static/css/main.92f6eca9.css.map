@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.92f6eca9.css","mappings":"AAAA,KACC,wBAAyB,CAGzB,QAAS,CAFT,eAAkB,CAClB,SAED","sources":["styles.css"],"sourcesContent":["body {\n\tbackground-color: #2e0836; /* #2e0836 */\n\tmargin: 10px 0 0 0;\n\tpadding: 0;\n\tborder: 0;\n}\n"],"names":[],"sourceRoot":""}
