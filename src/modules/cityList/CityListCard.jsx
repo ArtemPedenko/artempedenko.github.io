@@ -9,10 +9,10 @@ export default function CityListCard(props) {
   const { cityItem } = props;
   const dispatch = useDispatch();
   const searchingText = useSelector(
-    (state) => state.cityWishList.searchingText
+    (state) => state.cityWishList.searchingText,
   );
   const currentStatus = useSelector(
-    (state) => state.cityWishList.currentStatus
+    (state) => state.cityWishList.currentStatus,
   );
 
   const [open, setOpen] = useState(false);
@@ -21,7 +21,13 @@ export default function CityListCard(props) {
 
   return (
     <>
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          border: "1 px solid red",
+        }}
+      >
         <Box
           sx={{
             display: "flex",
@@ -32,7 +38,7 @@ export default function CityListCard(props) {
             borderRadius: "5px",
             alignItems: "center",
             justifyContent: "space-between",
-            width: "80vw",
+            width: "1500px",
           }}
         >
           <Stack spacing={2}>

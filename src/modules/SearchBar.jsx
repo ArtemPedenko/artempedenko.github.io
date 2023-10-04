@@ -8,7 +8,7 @@ let myInterval;
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
-  width: "80vw",
+  width: "1500px",
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -32,10 +32,10 @@ export default function SearchBar() {
   const data = useSelector((state) => state.cityWishList.data);
   const selectedData = useSelector((state) => state.cityWishList.selectedData);
   const searchingText = useSelector(
-    (state) => state.cityWishList.searchingText
+    (state) => state.cityWishList.searchingText,
   );
   const currentStatus = useSelector(
-    (state) => state.cityWishList.currentStatus
+    (state) => state.cityWishList.currentStatus,
   );
 
   function searchFunc(filter) {
@@ -58,7 +58,6 @@ export default function SearchBar() {
     <Box
       sx={{
         display: "flex",
-        justifyContent: "center",
       }}
     >
       <Search>
@@ -68,7 +67,6 @@ export default function SearchBar() {
         <StyledInputBase
           value={searchingText}
           placeholder="Search…"
-          //inputProps={{ "aria-label": "search" }}
           onChange={(e) => delaySearching(e.target.value)}
         />
       </Search>

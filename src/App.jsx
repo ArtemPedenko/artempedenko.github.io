@@ -12,11 +12,11 @@ export default function App() {
 
   const data = useSelector((state) => state.cityWishList.data);
   const currentStatus = useSelector(
-    (state) => state.cityWishList.currentStatus
+    (state) => state.cityWishList.currentStatus,
   );
   const selectedData = useSelector((state) => state.cityWishList.selectedData);
   const searchingText = useSelector(
-    (state) => state.cityWishList.searchingText
+    (state) => state.cityWishList.searchingText,
   );
   const visibleData = useSelector((state) => state.cityWishList.visibleData);
 
@@ -38,10 +38,14 @@ export default function App() {
   return (
     <>
       <Box sx={{ overflow: "hidden" }}>
-        <Box sx={{ position: "relative" }}>
+        <Box
+          sx={{
+            position: "relative",
+            width: "1500px",
+            margin: "0 auto",
+          }}
+        >
           <SearchBar />
-        </Box>
-        <Box sx={{ position: "relative" }}>
           <ButtonBar />
         </Box>
         {renderElement()}

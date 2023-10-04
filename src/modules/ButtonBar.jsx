@@ -5,17 +5,10 @@ import ButtonRandom from "./buttonBar/ButtonRandom";
 
 export default function ButtonBar() {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-      }}
-    >
-      <Stack direction="row" gap={2} mt="5px" sx={{ width: "80vw" }}>
-        <ListButtons />
-        <ButtonRandom />
-        <RandomStreet />
-      </Stack>
-    </Box>
+    <Stack direction="row" gap={2} mt="5px" sx={{ width: "1500px" }}>
+      <ListButtons />
+      <ButtonRandom />
+      <RandomStreet />
+    </Stack>
   );
 }

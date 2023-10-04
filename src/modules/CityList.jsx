@@ -9,7 +9,7 @@ export default function CityList({ visibleData }) {
       style={{
         ...style,
         top: `${parseFloat(style.top)}px`,
-        width: "100vw",
+        width: "1500px",
       }}
     >
       <CityListCard cityItem={visibleData[index]} />
@@ -17,7 +17,7 @@ export default function CityList({ visibleData }) {
   );
 
   return (
-    <AutoSizer style={{ width: "90vw", height: "87vh" }}>
+    <AutoSizer style={{ width: "1500px", height: "87vh", margin: "0 auto" }}>
       {({ height, width }) => (
         <List
           width={width}
