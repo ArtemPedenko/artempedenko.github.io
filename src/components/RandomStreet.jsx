@@ -8,8 +8,8 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: "800px",
-  height: "800px",
+  width: "80vw",
+  height: "80vh",
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
@@ -17,7 +17,7 @@ const style = {
 
 export default function RandomStreet() {
   const randomStreetModal = useSelector(
-    (state) => state.cityWishList.randomStreetModal
+    (state) => state.cityWishList.randomStreetModal,
   );
   const randomCity = useSelector((state) => state.cityWishList.randomCity);
   const latitude = +randomCity.lat;
