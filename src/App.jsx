@@ -41,7 +41,7 @@ export default function App() {
         <Box
           sx={{
             position: "relative",
-            width: "1500px",
+            width: "80vw",
             margin: "0 auto",
           }}
         >

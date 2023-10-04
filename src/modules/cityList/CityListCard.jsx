@@ -25,7 +25,6 @@ export default function CityListCard(props) {
         sx={{
           display: "flex",
           justifyContent: "center",
-          border: "1 px solid red",
         }}
       >
         <Box
@@ -38,7 +37,7 @@ export default function CityListCard(props) {
             borderRadius: "5px",
             alignItems: "center",
             justifyContent: "space-between",
-            width: "1500px",
+            width: "100%",
           }}
         >
           <Stack spacing={2}>

@@ -8,7 +8,7 @@ let myInterval;
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
-  width: "1500px",
+  width: "100%",
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
