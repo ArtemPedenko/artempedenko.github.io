@@ -11,7 +11,6 @@ const addToSelected = (selectedData, dataElement) => {
 };
 
 const removeFromSelected = (selectedData, dataElement) => {
-  console.log(dataElement.city);
   const changedSelectedData = [...selectedData];
   selectedData.map((item, index) => {
     if (item.city === dataElement.city) {
