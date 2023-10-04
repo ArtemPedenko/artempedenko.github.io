@@ -20,7 +20,7 @@ export default function CityList({ visibleData }) {
     <AutoSizer
       style={{
         width: "80vw",
-        height: "87vh",
+        height: "86vh",
         margin: "0 auto",
       }}
     >
